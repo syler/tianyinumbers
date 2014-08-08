@@ -59,7 +59,7 @@
         <ComboBox x:Name="cbCity" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Cities,ElementName=rootWindow}" SelectedItem="{Binding SelectedCity,ElementName=rootWindow}" ItemTemplate="{DynamicResource CityDataTemplate}"></ComboBox>
         <TextBlock Text="获取次数" Grid.Row="3"/>
         <ComboBox x:Name="cbCount" Grid.Row="3" Grid.Column="1" IsEditable="True">
-            <ComboBoxItem IsSelected="True">10</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">1</ComboBoxItem>
             <ComboBoxItem>30</ComboBoxItem>
         </ComboBox>
         <DataGrid Grid.Row="4" Grid.ColumnSpan="3" ItemsSource="{Binding Source={StaticResource filteredNumbers}}" AutoGenerateColumns="False">

@@ -133,6 +133,12 @@ namespace tianyi
                     request.ContentType = "application/x-www-form-urlencoded";
                     request.ContentLength = this.postBytes.Length;
                     request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
+                    request.Accept = "application/json, text/javascript, */*; q=0.01";
+                    request.Headers.Add("Accept-Encoding", "gzip,deflate,sdch");
+                    request.Headers.Add("Accept-Language", "en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4,zh-TW;q=0.2");
+                    request.Headers.Add("Origin", "http://shop.sc.189.cn");
+                    request.Referer = "http://shop.sc.189.cn/searchNum?intid=wtdh-11";
+                    request.Headers.Add("X-Requested-With", "XMLHttpRequest");
 
                     request.BeginGetRequestStream(this.BeginRequestStream, request);
                 });
