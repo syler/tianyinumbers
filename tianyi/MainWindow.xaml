@@ -7,6 +7,10 @@
         <Style TargetType="{x:Type Window}">
             <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
         <CollectionViewSource x:Key="filteredNumbers" Source="{Binding Numbers,ElementName=rootWindow}" 
                           Filter="CollectionViewSource_Filter">
         </CollectionViewSource>
