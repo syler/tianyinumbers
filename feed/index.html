@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>1Few</title>
+	<atom:link href="http://192.168.1.35/feed" rel="self" type="application/rss+xml" />
+	<link>http://192.168.1.35</link>
+	<description>每天进步一点点</description>
+	<lastBuildDate>Tue, 02 Sep 2014 08:05:27 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>解決Prism中嵌套的Region在RegionManager中找不到的問題</title>
+		<link>http://192.168.1.35/1.html</link>
+		<comments>http://192.168.1.35/1.html#comments</comments>
+		<pubDate>Mon, 25 Aug 2014 18:23:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[.NET]]></category>
+
+		<guid isPermaLink="false">/1.html</guid>
+		<description><![CDATA[<p>示意圖</p> <p>Region A裝載ModuleA，RegionB裝載ModuleB，Region C裝載Module C 其中，Module A內部還有 Region A1和A2，現在需要Region A1的內容導航爲其他內容。</p> <p>this.regionManager.RegisterViewWithRegion(RegionA1, typeof(RegionA1Content1));</p> <p>頁面可以正常顯示，RegionA1Content顯示在RegionA1中，但是用RequestNavigate進行導航時失敗，經查是由於RegionManager不存在RegionWizardMainContent這個Region。 導航語句爲：</p> <p>this.regionManager.RequestNavigate(RegionA1, “RegionA1Content2”);</p> <p>上一句是失敗的。 解決方法是使用RegionManager.SetRegionManager：</p> <p>RegionManager.SetRegionManager(this.regionA1Region, regionManager);</p> ]]></description>
+				<content:encoded><![CDATA[<p>示意圖</p>
+<div class="separator" style="clear: both; text-align: center;"></div>
+<p><a href="http://192.168.1.35/wp-content/uploads/2014/08/mockup.png"><img class="alignnone size-medium wp-image-52" src="http://192.168.1.35/wp-content/uploads/2014/08/mockup-300x195.png" alt="示意图" width="300" height="195" /></a>Region A裝載ModuleA，RegionB裝載ModuleB，Region C裝載Module C<br />
+其中，Module A內部還有 Region A1和A2，現在需要Region A1的內容導航爲其他內容。</p>
+<p>this.regionManager.RegisterViewWithRegion(RegionA1, typeof(RegionA1Content1));</p>
+<p>頁面可以正常顯示，RegionA1Content顯示在RegionA1中，但是用RequestNavigate進行導航時失敗，經查是由於RegionManager不存在RegionWizardMainContent這個Region。<br />
+<a name="more"></a><br />
+導航語句爲：</p>
+<p>this.regionManager.RequestNavigate(RegionA1, “RegionA1Content2”);</p>
+<p>上一句是失敗的。<br />
+<a href="https://www.blogger.com/null" name="more"></a><br />
+解決方法是使用RegionManager.SetRegionManager：</p>
+<p>RegionManager.SetRegionManager(this.regionA1Region, regionManager);</p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/1.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>帮助选择电信手机号的小程序</title>
+		<link>http://192.168.1.35/2.html</link>
+		<comments>http://192.168.1.35/2.html#comments</comments>
+		<pubDate>Sat, 09 Aug 2014 21:46:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[.NET]]></category>
+
+		<guid isPermaLink="false">/2.html</guid>
+		<description><![CDATA[<p>点击Search，向电信网站索取数据，可以把获取次数调得大些，不过建议不超过1000次，因为同时发出1000个http请求，对服务器有压力，而且，次数越多重复的号码获取得越来越多，新号码就越来越少。 Visual Studio 2013下开发，WPF/C#。 开源地址：http://git.oschina.net/syler/tianyi-numbers 暂时没有提供编译好的二进制exe </p> <p>Save可以将获取到的号码保存到一个文件 绿色的Drag To Load Saved是将一个保存好的文件加载到程序中。 过滤是从已获得的号码中筛选心仪的号码。</p> ]]></description>
+				<content:encoded><![CDATA[<p>点击Search，向电信网站索取数据，可以把获取次数调得大些，不过建议不超过1000次，因为同时发出1000个http请求，对服务器有压力，而且，次数越多重复的号码获取得越来越多，新号码就越来越少。<br />
+Visual Studio 2013下开发，WPF/C#。<br />
+开源地址：<a title="http://git.oschina.net/syler/tianyi-numbers" href="http://git.oschina.net/syler/tianyi-numbers">http://git.oschina.net/syler/tianyi-numbers</a><br />
+暂时没有提供编译好的二进制exe<br />
+<a href="http://192.168.1.35/wp-content/uploads/2014/08/tianyi_thumb.png"><img class="alignnone wp-image-54 size-full" src="http://192.168.1.35/wp-content/uploads/2014/08/tianyi_thumb.png" alt="选号界面" width="529" height="354" /></a></p>
+<p><a name="more"></a>Save可以将获取到的号码保存到一个文件<br />
+绿色的Drag To Load Saved是将一个保存好的文件加载到程序中。<br />
+过滤是从已获得的号码中筛选心仪的号码。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/2.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Kindle 3文章在word中的设置</title>
+		<link>http://192.168.1.35/8.html</link>
+		<comments>http://192.168.1.35/8.html#comments</comments>
+		<pubDate>Sat, 02 Aug 2014 00:40:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/8.html</guid>
+		<description><![CDATA[<p>今天量了一下, kindle 3的屏幕大小是92*122毫米，每行显示23个字比较合适，页边距4面都是7毫米。雅黑字体显示合适。</p> <p>在word里设置页面的大小9.2&#215;12.2厘米，调整字体10号，可能比较合适，嫌字大的还可尝试更小字号。</p> <p>使用思源黑体的话，可以尝试思源黑体Normal 9号字。</p> <p>附图几种字体。</p> <p> <p></p> <p></p> <p></p> <p></p> ]]></description>
+				<content:encoded><![CDATA[<p>今天量了一下, kindle 3的屏幕大小是92*122毫米，每行显示23个字比较合适，页边距4面都是7毫米。雅黑字体显示合适。</p>
+<p>在word里设置页面的大小9.2&#215;12.2厘米，调整字体10号，可能比较合适，嫌字大的还可尝试更小字号。</p>
+<p>使用思源黑体的话，可以尝试思源黑体Normal 9号字。</p>
+<p>附图几种字体。</p>
+<p><a name="more"></a>
+<p><img title="思源黑体Normal 9号字" alt="思源黑体Normal 9号字" src="http://i1299.photobucket.com/albums/ag74/sylerzhou/PostToWeb/screen_shot-25384_zps3a42ad0d.gif" /></p>
+<p><img title="华文中宋 9号字" alt="华文中宋 9号字" src="http://i1299.photobucket.com/albums/ag74/sylerzhou/PostToWeb/NWP_140802_0000_zps1de7f031.jpg" width="360" height="480" /></p>
+<p><img title="思源黑体 Light 9" alt="思源黑体 Light 9" src="http://i1299.photobucket.com/albums/ag74/sylerzhou/PostToWeb/WP_000114_zpsf5a16bec.jpg" width="360" height="480" /></p>
+<p><img title="雅黑10号字" alt="雅黑10号字" src="http://i1299.photobucket.com/albums/ag74/sylerzhou/PostToWeb/WP_000112_zpsa1d34575.jpg" width="360" height="480" /></p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/8.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>网线制作线序</title>
+		<link>http://192.168.1.35/9.html</link>
+		<comments>http://192.168.1.35/9.html#comments</comments>
+		<pubDate>Sun, 29 Sep 2013 19:13:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/9.html</guid>
+		<description><![CDATA[<p>千兆5类或超5类双绞线的形式与百兆网线的形式相同，也分为直通和交叉两种。直通网线与我们平时所使用的没有什么差别，都是一一对应的。但是传统的百兆网络只用到4 根线缆来传输，而千兆网络要用到8 根来传输，所以千兆交叉网线的制作与百兆不同，制作方法如下：1对3，2对6，3对1，4对7，5对8，6对2，7对4，8对5例如：一端为：半橙、橙，半绿、兰，半兰、绿，半棕、棕；另一端：半绿、绿，半橙、半棕、棕，橙，兰，半兰</p> ]]></description>
+				<content:encoded><![CDATA[<p>千兆5类或超5类双绞线的形式与百兆网线的形式相同，也分为直通和交叉两种。直通网线与我们平时所使用的没有什么差别，都是一一对应的。但是传统的百兆网络只用到4 根线缆来传输，而千兆网络要用到8 根来传输，所以千兆交叉网线的制作与百兆不同，制作方法如下：1对3，2对6，3对1，4对7，5对8，6对2，7对4，8对5<br />例如：<br />一端为：半橙、橙，半绿、兰，半兰、绿，半棕、棕；<br />另一端：半绿、绿，半橙、半棕、棕，橙，兰，半兰</p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/9.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>美如画R9第三代sigma 8671 TTL针脚电压图</title>
+		<link>http://192.168.1.35/5.html</link>
+		<comments>http://192.168.1.35/5.html#comments</comments>
+		<pubDate>Wed, 20 Feb 2013 06:55:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/5.html</guid>
+		<description><![CDATA[<p>因为想用ttl刷机，受 http://www.hdpfans.com/thread-116986-1-1.html 这里的启发，感谢dragon。买了万用表对J110的电压进行测定，现在分享我的结果。</p> J110四针插槽，笔者询问美如画得知，这个是TTL接口，但是没有标明引脚顺序，所以需要用万用表测量VCC端后才能尝试接入 <p> <p>下面是测试结果，点击查看大图。</p> <p> <p></p> <p> <p></p> <p> <p>J111和J110的图:</p> <p> <p>gnd/rx/tx接上后(线的接法：0v接gnd，5.29v的不要接，tx/rx可以自己交换着测试。)，可以看到下面的信息，但是无法输入任何东西，type c to quit AUTOBOOT按C也没有用：</p> 3cidxs3deaca4b67cdb5ffa460e0cdbf8b287060bb4366S#xos2P68-100 (sfla 128kbytes. subid 0x00/db) [serial#b46b37a15b3a4922660c80a48078a15f]#stepxmb 0xcb - 3#chpll 0x01000024/0x00000201 -> 0x01000033/0x00000101... actual sys=351MHz#DRAM setup (method=0x10015858) ...#DRAM0 Window : 0x#2a#29#2a#2a# (20)#DRAM0 Settings: WD=0x0c0d0c0c RG=0x0b0b0b0b RR=0x0b0b0b0b RF=0x0d0d0d0d#step6 @0x000*** zxenv has been customized compared to build ***#step22#eiCS 0 vendor [...]]]></description>
+				<content:encoded><![CDATA[<p>因为想用ttl刷机，受 http://www.hdpfans.com/thread-116986-1-1.html 这里的启发，感谢dragon。<br />买了万用表对J110的电压进行测定，现在分享我的结果。</p>
+<pre>J110四针插槽，笔者询问美如画得知，这个是TTL接口，但是没有标明引脚顺序，所以需要用万用表测量VCC端后才能尝试接入</pre>
+<p>
+
+<p>下面是测试结果，点击查看大图。</p>
+<p>
+<p><a href="http://i45.tinypic.com/hrwm6f.jpg" target="_blank"><img title="美如画R9第三代sigma8671 TTL针脚电压" alt="美如画R9第三代sigma8671 TTL针脚电压" src="http://i45.tinypic.com/hrwm6f.jpg" width="337" height="480" /></a></p>
+<p><a name="more"></a>
+<p></p>
+<p>
+<p>J111和J110的图:<br /><a href="http://i48.tinypic.com/11qh5ah.jpg" target="_blank"><img title="J110和J111" alt="J110和J111" src="http://i48.tinypic.com/11qh5ah.jpg" width="471" height="480" /></a></p>
+<p>
+<p>gnd/rx/tx接上后(线的接法：0v接gnd，5.29v的不要接，tx/rx可以自己交换着测试。)，可以看到下面的信息，但是无法输入任何东西，type c to quit AUTOBOOT按C也没有用：</p>
+<pre>3cidxs3deaca4b67cdb5ffa460e0cdbf8b287060bb4366S<br /><br />#xos2P68-100 (sfla 128kbytes. subid 0x00/db) [serial#b46b37a15b3a4922660c80a48078a15f]<br />#stepxmb 0xcb - 3<br />#chpll 0x01000024/0x00000201 -> 0x01000033/0x00000101... actual sys=351MHz<br />#DRAM setup (method=0x10015858) ...<br />#DRAM0 Window  :    0x#2a#29#2a#2a# (20)<br />#DRAM0 Settings: WD=0x0c0d0c0c RG=0x0b0b0b0b RR=0x0b0b0b0b RF=0x0d0d0d0d<br />#step6 @0x000*** zxenv has been customized compared to build ***<br />#step22<br />#ei<br /><br />CS 0 vendor id 0xec.......<br />CS 0 device id 0xda.......<br />doing Super block Sanity checks... location 4<br />doing Managment block Sanity checks ...<br /><br />CS 1 vendor id 0x00.......<br />CS 1 device id 0x00.......<br />=====================================<br />Build date=Jun 15 2012, time=04:10:58<br />=====================================<br />type c to quit AUTOBOOT<br />88:E0:A0:08:C5:D1<br />romfs<br /><br />  Checking zboot signature..  it's a zboot file, signature OK.<br />ZBOOT_ATTR_PHY_LOAD OFF<br />g_load_addr=0x80000000,g_base_addr=0x830000b0,count=0x0070d2d4<br />Waiting for XLOAD completion.<br />XLOAD done. status = 0x6 .. OK.<br />ZBOOT_ATTR_GZIP ON<br />  Decompressing to 0x84000000 .. <br />Output length: 0x009dfcb5(10353845)<br />Decompressing decrypted data from 0xa70004c4 to 0x84000000 OK<br />3cidxs3deaca4b67cdb5ffa460e0cdbf8b287060bb4366S<br /><br />#xos2P68-100 (sfla 128kbytes. subid 0x00/db) [serial#b46b37a15b3a4922660c80a48078a15f]<br />#stepxmb 0xcb - 3<br />#chpll 0x01000024/0x00000201 -> 0x01000033/0x00000101... actual sys=351MHz<br />#DRAM setup (method=0x10015858) ...<br />#DRAM0 Window  :    0x#2a#2a#2a#2a# (21)<br />#DRAM0 Settings: WD=0x0c0c0c0c RG=0x0b0b0b0b RR=0x0b0b0b0b RF=0x0d0d0d0d<br />#*** zxenv has been customized compared to build ***<br />#step22<br />#ei<br /><br />CS 0 vendor id 0xec.......<br />CS 0 device id 0xda.......<br />doing Super block Sanity checks... location 4<br />doing Managment block Sanity checks ...<br /><br />CS 1 vendor id 0x00.......<br />CS 1 device id 0x00.......<br />=====================================<br />Build date=Jun 15 2012, time=04:10:58<br />=====================================<br />type c to quit AUTOBOOT<br />88:E0:A0:08:C5:D1<br />romfs<br /><br />  Checking zboot signature..  it's a zboot file, signature OK.<br />ZBOOT_ATTR_PHY_LOAD OFF<br />g_load_addr=0x80000000,g_base_addr=0x830000b0,count=0x0070d2d4<br />Waiting for XLOAD completion.<br />XLOAD done. status = 0x6 .. OK.<br />ZBOOT_ATTR_GZIP ON<br />  Decompressing to 0x84000000 .. <br />Output length: 0x009dfcb5(10353845)<br />Decompressing decrypted data from 0xa70004c4 to 0x84000000 OK</pre>
+<p>
+<p>不知道怎么办了。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/5.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>openwrt局域网内部机器不能互通的问题</title>
+		<link>http://192.168.1.35/6.html</link>
+		<comments>http://192.168.1.35/6.html#comments</comments>
+		<pubDate>Sat, 05 Jan 2013 06:51:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/6.html</guid>
+		<description><![CDATA[<p>如果你openwrt路由器局域网内的机器不能互通，估计是因为你没有设置vlan。</p> <p>我发现这个问题是因为我发现我无法访问我刚买的美如画R9的web页面，起初是以为是美如画的问题，然后发现在路由器上可以ping美如画R9，但是在我的电脑上不能ping它，我意识到只是我的openwrt的配置问题。</p> <p>简单的说，我的4个lan口都是相互独立的，我需要把四个lan口配置在相同的vlan里，这样它们才能够互通，要完成这一步，其实只要简单的改一改/etc/config/network的配置就好了</p> config switch eth0 option reset '1' option enable_vlan '1'config switch_vlan option device 'eth0' option vlan '1' option ports '1,2,3,4' <p> <p>问题解决了。</p> ]]></description>
+				<content:encoded><![CDATA[<p>如果你openwrt路由器局域网内的机器不能互通，估计是因为你没有设置vlan。</p>
+<p>我发现这个问题是因为我发现我无法访问我刚买的美如画R9的web页面，起初是以为是美如画的问题，然后发现在路由器上可以ping美如画R9，但是在我的电脑上不能ping它，我意识到只是我的openwrt的配置问题。</p>
+<p>简单的说，我的4个lan口都是相互独立的，我需要把四个lan口配置在相同的vlan里，这样它们才能够互通，要完成这一步，其实只要简单的改一改/etc/config/network的配置就好了</p>
+<pre>config switch eth0<br />        option reset    '1'<br />        option enable_vlan      '1'<br /><br />config switch_vlan<br />        option device   'eth0'<br />        option vlan     '1'<br />        option ports    '1,2,3,4'</pre>
+<p>
+<p>问题解决了。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/6.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>为openwrt实现ipv6的支持</title>
+		<link>http://192.168.1.35/10.html</link>
+		<comments>http://192.168.1.35/10.html#comments</comments>
+		<pubDate>Tue, 27 Nov 2012 07:26:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/10.html</guid>
+		<description><![CDATA[<p>在上一篇：openwrt单线多拨记录 里，扩展到路由器的内存，既然有这么多的空间，怎么不实现ipv6呢。</p> <p>1. 安装必要的软件：</p> opkg install kmod-ipv6 luci-proto-6x4 radvd 6in4 ip kmod-ip6tables ip6tables <p> <p>2. 修改/etc/config/network</p> <p> <p>详细配置要参考http://tunnelbroker.net/的配置。</p> config 'interface' henet option proto '6in4' option peeraddr '66.220.18.42' option ip6addr '2001:470:c:10e::2/64' option tunnelid '140081' option username '2f9dxxx你的username xxxxxxxxxxxxxxxxxaa5' option password '你的密码' <p> <p>3. 修改radvd配置。</p> <p> </p> config interface option interface 'lan' option AdvSendAdvert 1 option AdvManagedFlag [...]]]></description>
+				<content:encoded><![CDATA[<p>在上一篇：<a href="http://1few.com/227.html">openwrt单线多拨记录</a> 里，扩展到路由器的内存，既然有这么多的空间，怎么不实现ipv6呢。</p>
+<p>1. 安装必要的软件：</p>
+<pre>opkg install kmod-ipv6 luci-proto-6x4 radvd 6in4 ip kmod-ip6tables ip6tables</pre>
+<p>
+<p>2. 修改/etc/config/network</p>
+<p>
+<p>详细配置要参考<a title="http://tunnelbroker.net/" href="http://tunnelbroker.net/">http://tunnelbroker.net/</a>的配置。</p>
+<pre>config 'interface' henet<br />        option proto '6in4'<br />        option peeraddr '66.220.18.42'<br />        option ip6addr  '2001:470:c:10e::2/64'<br />        option tunnelid '140081'<br />        option username '2f9dxxx你的username xxxxxxxxxxxxxxxxxaa5'<br />        option password '你的密码'</pre>
+<p>
+<p>3. 修改radvd配置。</p>
+<p><a name="more"></a>
+</p>
+<pre>config interface<br />        option interface        'lan'<br />        option AdvSendAdvert    1<br />        option AdvManagedFlag   0<br />        option AdvOtherConfigFlag 0<br />        option ignore           0<br /><br />config prefix<br />        option interface        'lan'<br />        # If not specified, a non-link-local prefix of the interface is used<br />        option prefix           '2001:db8:feed:b00::/64'<br />        option AdvOnLink        1<br />        option AdvAutonomous    1<br />        option AdvRouterAddr    0<br />        option ignore           0<br /><br />config rdnss<br />        option interface        'lan'<br />        # If not specified, the link-local address of the interface is used<br />        option addr             ''<br />        option ignore           1</pre>
+<p>
+<p>4. 大功没有告成</p>
+<p>
+<p>经测试，发现我的radvd没有运行。使用这个命令：</p>
+<pre>root@TL-WR3420:~# ps - ef | grep radvd<br /> 7818 root      1372 S    grep radvd<br />root@TL-WR3420:~# /usr/sbin/radvd<br />[Nov 26 22:47:13] radvd: can't open /etc/radvd.conf: No such file or directory<br />[Nov 26 22:47:13] radvd: Exiting, permissions on conf_file invalid.</pre>
+<p>
+<p>查看/etc/init.d/radvd脚本发现，这个脚本要在/var/etc/下生成一个radvd.conf，但/var/etc/radvd.conf文件是个空文件，里面什么都没有</p>
+<pre>root@TL-WR3420:~# cat /var/etc/radvd.conf</pre>
+<p>于是，我在/etc/下创建了一个radvd.conf，内容如下
+<pre>root@TL-WR3420:~# cat /etc/radvd.conf<br />interface br-lan<br />{<br />        AdvSendAdvert on;<br />        AdvManagedFlag off;<br />        AdvOtherConfigFlag off;<br /><br />        prefix 2001:db8:feed:b00::/64<br />        {<br />                AdvOnLink on;<br />                AdvAutonomous on;<br />                AdvRouterAddr off;<br />        };<br />};<br /></pre>
+<p>
+<p>再将/etc/init.d/radvd的start脚本注释掉，改为直接启动radvd：</p>
+<pre>        #config_load radvd<br /><br />        #RADVD_CONFIG_FILE=/var/etc/radvd.conf<br />        #config_foreach radvd_find_config_file radvd<br /><br />        #if [ -z "$RADVD_CONFIG_FILE" ]; then<br />        #       mkdir -p -- /var/etc/<br />        #       radvd_write_config > /var/etc/radvd.conf<br />        #       if [ -s "/var/etc/radvd.conf" ]; then<br />        #               RADVD_CONFIG_FILE=/var/etc/radvd.conf<br />        #       fi<br />        #fi<br /><br />        #[ -z "$RADVD_CONFIG_FILE" ] &#038;&#038; return 1<br /><br />        #sysctl -w net.ipv6.conf.all.forwarding=1 > /dev/null 2> /dev/null<br /><br />        #radvd -C "$RADVD_CONFIG_FILE" -m stderr_syslog -p /var/run/radvd.pid<br />        /usr/sbin/radvd</pre>
+<p>
+<p>重启路由器测试，好好的。</p>
+<p>
+<p>写到这里，想起看到的一个段子：</p>
+<pre>王重阳：“我等均已年迈，上次华山论剑后，大家约定这一次，就交由各自的徒弟去比武。你们都收徒了吗？” 欧阳锋：“我只有个侄子，没收徒。”王重阳：呵呵，没徒你说个JB。 王重阳：“我等均已年迈，上次华山论剑后，大家约定这一次，就交由各自的徒弟去比武。你们都收徒了吗？” 欧阳锋：“我只有个侄子，没收徒。”王重阳：呵呵，没徒你说个JB。</pre>
+<p><img alt="没徒你说个JB" src="https://lh3.googleusercontent.com/-FyBQh9LD0G4/ULOJvCCPKHI/AAAAAAAAODI/EJYY6YLoQUU/s895/ipv6-test.jpg" /></p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/10.html/feed</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>openwrt单线多拨记录</title>
+		<link>http://192.168.1.35/11.html</link>
+		<comments>http://192.168.1.35/11.html#comments</comments>
+		<pubDate>Sun, 25 Nov 2012 11:42:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/11.html</guid>
+		<description><![CDATA[<p>一 将openwrt 的 / 和 /overlay 加载到U盘上，这样空间更大。</p> <p>1. 安装block-mount block-hotplug kmod-usb-storage block-extroot</p> <p>2. /etc/init.d/fstab enable</p> <p>我的fstab文件的内容：</p> config global automount option from_fstab 1 option anon_mount 1config global autoswap option from_fstab 1 option anon_swap 0config mount option uuid bf851b96-a5ef-4581-bac2-7a9b5e08df0e option fstype ext4 option options rw,sync option enabled 1 option enabled_fsck 0 option is_rootfs 1config mount option target [...]]]></description>
+				<content:encoded><![CDATA[<p><strong>一 将openwrt 的 / 和 /overlay 加载到U盘上，这样空间更大。</strong></p>
+<p>1. 安装block-mount block-hotplug kmod-usb-storage block-extroot</p>
+<p>2. /etc/init.d/fstab enable</p>
+<p>我的fstab文件的内容：</p>
+<pre>config global automount<br />        option from_fstab 1<br />        option anon_mount 1<br /><br />config global autoswap<br />        option from_fstab 1<br />        option anon_swap 0<br /><br />config mount<br />        option uuid     bf851b96-a5ef-4581-bac2-7a9b5e08df0e<br />        option fstype   ext4<br />        option options  rw,sync<br />        option enabled  1<br />        option enabled_fsck 0<br />        option is_rootfs        1<br /><br />config mount<br />        option target   /overlay<br />        option uuid     8a80e824-5d3e-4afa-a2b4-3fd07931e4d2<br />        option fstype   ext4<br />        option options  rw,sync<br />        option enabled  1<br />        option enabled_fsck 0<br /><br />config swap<br />        option uuid     3a490e2e-aab6-4d2b-9c0d-f38fb60304e4<br />        option enabled  1</pre>
+<p><a name="more"></a>
+<p>3. 安装U盘点文件系统支持，我的是ext4: kmod-fs-ext4</p>
+<p>
+<p>现在，你应该能够mount USB上的分区到openwrt里了。</p>
+<p>
+<p>Q&#038;A;</p>
+<p>
+<p>1. rootfs好像mount不上去，我的df -h看起来像这样</p>
+<pre>root@OpenWrt:/# df -h<br />Filesystem                Size      Used Available Use% Mounted on<br />/dev/root                 1.9M      1.9M         0 100% /rom<br />tmpfs                    30.2M     72.0K     30.2M   0% /tmp<br />tmpfs                   512.0K         0    512.0K   0% /dev<br />/dev/sda2               354.9M     10.8M    325.8M   3% /overlay<br />mini_fo:/overlay          1.9M      1.9M         0 100% /<br />/dev/sda3               354.9M     10.8M    325.8M   3% /overlay </pre>
+<p>
+<p>&nbsp; </p>
+<p>看起来/ 还是1.9M，怎么回事？</p>
+<p>
+<p>A：这个问题我也困扰了我近一个小时，但是我发现虽然显示成这样，但是rootfs还是mount成功了的，你可以用scp来copy一个大文件到/去，如果可以copy，那就是正确的。</p>
+<p>
+<p>2. 你的fstab中的UUID是怎么来的，我要用什么UUID</p>
+<p>
+<p>使用blkid命令查看</p>
+<pre>root@OpenWrt:~# blkid<br />/dev/sda3: LABEL="overlay" UUID="8a80e824-5d3e-4afa-a2b4-3fd07931e4d2"<br />/dev/sda2: LABEL="root" UUID="bf851b96-a5ef-4581-bac2-7a9b5e08df0e"<br />/dev/sda1: UUID="3a490e2e-aab6-4d2b-9c0d-f38fb60304e4"</pre>
+<p>
+<p><strong>二 安装多拨软件</strong></p>
+<p>
+<p>1. 安装macvlan。</p>
+<p>
+<p>2. 安装luci-app-multiwan，并使其开机启动</p>
+<p>
+<p>3. 编辑/etc/rc.local，加入一些内容，下面是我的：</p>
+<pre>root@OpenWrt:~# vi /etc/rc.local<br /># Put your custom commands here that should be executed once<br /># the system init finished. By default this file does nothing.<br />ip link add link eth1 eth2 type macvlan<br />ifconfig eth2 hw ether 0E:1F:3C:3D:F0:EE<br />ifconfig eth2 up<br />exit 0<br /></pre>
+<p>
+<p>4. 编辑/etc/config/network，加入</p>
+<pre>config 'interface' 'wan2'<br />	option 'ifname' 'eth2'<br />	option 'proto' 'pppoe'<br />	option 'username' '你的拨号帐号'<br />	option 'password' '你的密码'</pre>
+<p>
+<p>5. 在web界面下的network/multi-wan下面，删除多余的配置，DefaultRoute设为Load Balancer。</p>
+<p>
+<p>Q&#038;A;</p>
+<p>
+<p>1. Q：为什么我两个wan都连接上时，反而无法上网？</p>
+<p>
+<p>A:</p>
+<p>
+<p>a) 你检查一下multiwan你Enable没有（web里那个勾有没有打上）。</p>
+<p>
+<p>b) 开机有没有自动启动multiwan。</p>
+<p>
+<p>c) 你改完之后，重启没有，如果没有，重启一下路由看看。</p>
+<p>
+<p>2 Q:怎么我的Wan2有IP（连接上了）但好像上不了网（没有流量通过）？</p>
+<p>
+<p>A：这通常是你Wan2的防火墙设置，你进network/interfaces/wan2看看，你是不是配的wan2（好像最先会默认配成Wan)</p>
+<p>
+<p>再到network/firewall里，看zones的wan2，要勾选allow forward from source zones：lan:lan，masquerading和mss clamping要勾上。</p>
+<p>
+<p>3. Q：我怎么测试我的两个Wan都有用呢？</p>
+<p>
+<p>A:用一个下载工具下载，两个wan口如果都有流量，就对了。</p>
+<p>
+<p>我的几张截图</p>
+<p><img src="https://lh4.googleusercontent.com/-YiE7MgSKjXo/ULEhvLJCfoI/AAAAAAAAOCo/vU__VC4Pfb4/s765/firewall+lan+setting1.jpg" /> <br /><img src="https://lh6.googleusercontent.com/-VDB_plPD7sc/ULEhwM6ZBII/AAAAAAAAOCw/Y5MStKQPDpA/s771/firewall+lan+setting2.jpg" /> <br /><img src="https://lh4.googleusercontent.com/-9ZgdCBCEWy8/ULEhxE3oDYI/AAAAAAAAOC4/YCaCP6WLYgk/s635/multiwan+setting.jpg" /></p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/11.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>win激活备份</title>
+		<link>http://192.168.1.35/12.html</link>
+		<comments>http://192.168.1.35/12.html#comments</comments>
+		<pubDate>Fri, 16 Nov 2012 01:45:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/12.html</guid>
+		<description><![CDATA[<p>This guide will describe how to backup and restore your activation in a few easy steps in case of a worst case scenario and you have to reinstall Windows.</p> <p>1. Go to C:WindowsSystem32spp and backup the store folder as this turned out to be the only folder you need to make backup of (verified by [...]]]></description>
+				<content:encoded><![CDATA[<p>This guide will describe how to backup and restore your activation in a few easy steps in case of a worst case scenario and you have to reinstall Windows.</p>
+<p><strong>1.</strong> Go to C:WindowsSystem32spp and backup the <span style="text-decoration: underline;"><strong>store</strong></span> folder as this turned out to be the only folder you need to make backup of (verified by myself)</p>
+<p><span style="color: #008000;">Attention:</span><br />The store folder might be hidden, open up Folder options from Control panel and choose View tab, select Show hidden files and folders + uncheck Hide protected system files</p>
+<p><span style="color: #008000;">Attention 2:</span><br />Make sure to verify that the store folder contains these files and folders!</p>
+<p>1 file named data.dat which is hidden<br />1 file named tokens.dat which is visible<br />1 folder named cache containing a file named cache.dat<a name="more"></a></p>
+<p><strong>2.</strong> Re-install Windows</p>
+<p><strong>3.</strong> After Windows is re-installed I suggest running a new Command Prompt as Administrator where you need to type in <strong>slmgr -upk</strong> to uninstall the key so the status changes to Unlicensed</p>
+<p><strong>4.</strong> After step 3 you need to reboot in Safe mode and easiest way is by using msconfig via Run. Choose the Boot tab and then Safe boot-Minimal, apply and restart when prompted</p>
+<p><strong>5.</strong> After the PC has rebooted in Safe mode open a new Command Prompt as Administrator and type <strong>net stop sppsvc</strong> to stop the Software Protection Platform service (sometimes you can get a message that it&#8217;s already stopped and not running)</p>
+<p><strong>6.</strong> Go to C:WindowsSystem32spp and replace the current store folder with the backed up one (I just copied the folder and pasted over the old one replacing the files altogether)</p>
+<p><strong>7.</strong> Go to Run and use msconfig and choose Normal boot under General tab this time, apply and click restart when prompted</p>
+<p><strong>8.</strong> When restarted you can see that the watermarks are gone and by checking the usual slmgr -dli/dlv/xpr commands in Command Prompt you&#8217;ll see that it worked and you&#8217;re activated + by checking the Volume Activation Management Tool 2.0 you&#8217;ll see License Status: License renewed and Genuine Status: Genuine</p>
+<p>&nbsp;</p>
+<p>originally comes from <a href="http://forums.mydigitallife.info/threads/35737-GUIDE-How-to-backup-and-restore-Windows-8-activation">http://forums.mydigitallife.info/threads/35737-GUIDE-How-to-backup-and-restore-Windows-8-activation</a></p>
+<p>related links:</p>
+<p><a href="http://forums.mydigitallife.info/threads/39048-HOW-TO-KMS-HOST-Setup-and-Charge-v-2-0">http://forums.mydigitallife.info/threads/39048-HOW-TO-KMS-HOST-Setup-and-Charge-v-2-0</a></p>
+<p><a href="http://forums.mydigitallife.info/threads/38289-Windows-8-KMS-Activation">http://forums.mydigitallife.info/threads/38289-Windows-8-KMS-Activation</a></p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/12.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>解决vim中上下左右键出现ABCD的问题</title>
+		<link>http://192.168.1.35/13.html</link>
+		<comments>http://192.168.1.35/13.html#comments</comments>
+		<pubDate>Thu, 15 Nov 2012 05:23:00 +0000</pubDate>
+		<dc:creator><![CDATA[syler]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/13.html</guid>
+		<description><![CDATA[<p>在insert模式中，按上下左右箭头时会出现ABCD，只要输入：</p> :set term=cons25 <p> <p>但是这样的话，每次都需要这样改，但是使用如下方法可以解决：</p> <p> <p>在你的home目录下创建一个.vimrc文件（如果你没有的话）</p> <p> <p>在里面写入:</p> :set nocompatible <p>注： <p>我是在这里看到的：</p> <p> <p>http://vim.wikia.com/wiki/Fix_arrow_keys_that_display_A_B_C_D_on_remote_shell</p> ]]></description>
+				<content:encoded><![CDATA[<p>在insert模式中，按上下左右箭头时会出现ABCD，只要输入：</p>
+<pre>:set term=cons25</pre>
+<p>
+<p>但是这样的话，每次都需要这样改，但是使用如下方法可以解决：</p>
+<p>
+<p>在你的home目录下创建一个.vimrc文件（如果你没有的话）</p>
+<p>
+<p>在里面写入:</p>
+<pre>:set nocompatible</pre>
+<p><a name="more"></a>注： 
+<p>我是在这里看到的：</p>
+<p>
+<p><a title="http://vim.wikia.com/wiki/Fix_arrow_keys_that_display_A_B_C_D_on_remote_shell" href="http://vim.wikia.com/wiki/Fix_arrow_keys_that_display_A_B_C_D_on_remote_shell">http://vim.wikia.com/wiki/Fix_arrow_keys_that_display_A_B_C_D_on_remote_shell</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://192.168.1.35/13.html/feed</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
