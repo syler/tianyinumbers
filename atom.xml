@@ -4,7 +4,7 @@
  <title>1Few</title>
  <link href="http://www.1few.com/atom.xml" rel="self"/>
  <link href="http://www.1few.com/"/>
- <updated>2014-09-08T22:30:49+08:00</updated>
+ <updated>2014-09-08T22:48:07+08:00</updated>
  <id>http://www.1few.com</id>
  <author>
    <name>syler</name>
@@ -76,6 +76,101 @@ Save可以将获取到的号码保存到一个文件&lt;/p&gt;
 &lt;p&gt;使用思源黑体的话，可以尝试思源黑体Normal 9号字
 &lt;!--more--&gt;
 &lt;img src=&quot;http://ww4.sinaimg.cn/mw690/4dcfc0e3gw1ek59ajqdh7g20go0m80tv.gif&quot; alt=&quot;思源黑体Normal 9号字&quot; title=&quot;思源黑体Normal 9号字&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>美如画R9第三代sigma 8671 TTL针脚电压图</title>
+   <link href="http://www.1few.com/2013/magica-player-ttl"/>
+   <updated>2013-02-20T00:00:00+08:00</updated>
+   <id>http://www.1few.com/2013/2013-magica-player-ttl</id>
+   <content type="html">&lt;p&gt;因为想用ttl刷机，受 &lt;a href=&quot;http://www.hdpfans.com/thread-116986-1-1.html&quot;&gt;hdpfans&lt;/a&gt; 那里的启发，感谢dragon。&lt;/p&gt;
+
+&lt;p&gt;买了万用表对J110的电压进行测定，现在分享我的结果。
+&lt;!--more--&gt;
+J110四针插槽，笔者询问美如画得知，这个是TTL接口，但是没有标明引脚顺序，所以需要用万用表测量VCC端后才能尝试接入。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i45.tinypic.com/hrwm6f.jpg&quot; alt=&quot;美如画R9第三代sigma8671 TTL针脚电压&quot; title=&quot;美如画R9第三代sigma8671 TTL针脚电压&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;J111和J110的图:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i48.tinypic.com/11qh5ah.jpg&quot; alt=&quot;J110和J111&quot; title=&quot;J110和J111&quot; /&gt;
+gnd/rx/tx接上后(线的接法：0v接gnd，5.29v的不要接，tx/rx可以自己交换着测试。)，可以看到下面的信息，但是无法输入任何东西，type c to quit AUTOBOOT按C也没有用。&lt;/p&gt;
+
+&lt;p&gt;以下是console的输出结果&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;3cidxs3deaca4b67cdb5ffa460e0cdbf8b287060bb4366S
+
+&lt;span class=&quot;c&quot;&gt;#xos2P68-100 (sfla 128kbytes. subid 0x00/db) [serial#b46b37a15b3a4922660c80a48078a15f]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#stepxmb 0xcb - 3&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#chpll 0x01000024/0x00000201 -&amp;gt; 0x01000033/0x00000101... actual sys=351MHz&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#DRAM setup (method=0x10015858) ...&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#DRAM0 Window  :    0x#2a#29#2a#2a# (20)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#DRAM0 Settings: WD=0x0c0d0c0c RG=0x0b0b0b0b RR=0x0b0b0b0b RF=0x0d0d0d0d&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#step6 @0x000*** zxenv has been customized compared to build ***&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#step22&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#ei&lt;/span&gt;
+
+CS &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; vendor id 0xec.......
+CS &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; device id 0xda.......
+doing Super block Sanity checks... location 4
+doing Managment block Sanity checks ...
+
+CS &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; vendor id 0x00.......
+CS &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; device id 0x00.......
+&lt;span class=&quot;o&quot;&gt;=====================================&lt;/span&gt;
+Build &lt;span class=&quot;nv&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Jun &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt; 2012, &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;04:10:58
+&lt;span class=&quot;o&quot;&gt;=====================================&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;type &lt;/span&gt;c to quit AUTOBOOT
+88:E0:A0:08:C5:D1
+romfs
+
+  Checking zboot signature..  it&lt;span class=&quot;s1&quot;&gt;&amp;#39;s a zboot file, signature OK.&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;ZBOOT_ATTR_PHY_LOAD OFF&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;g_load_addr=0x80000000,g_base_addr=0x830000b0,count=0x0070d2d4&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;Waiting for XLOAD completion.&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;XLOAD done. status = 0x6 .. OK.&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;ZBOOT_ATTR_GZIP ON&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  Decompressing to 0x84000000 .. &lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;Output length: 0x009dfcb5(10353845)&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;Decompressing decrypted data from 0xa70004c4 to 0x84000000 OK&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;3cidxs3deaca4b67cdb5ffa460e0cdbf8b287060bb4366S&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;#xos2P68-100 (sfla 128kbytes. subid 0x00/db) [serial#b46b37a15b3a4922660c80a48078a15f]&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#stepxmb 0xcb - 3&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#chpll 0x01000024/0x00000201 -&amp;gt; 0x01000033/0x00000101... actual sys=351MHz&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#DRAM setup (method=0x10015858) ...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#DRAM0 Window  :    0x#2a#2a#2a#2a# (21)&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#DRAM0 Settings: WD=0x0c0c0c0c RG=0x0b0b0b0b RR=0x0b0b0b0b RF=0x0d0d0d0d&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#*** zxenv has been customized compared to build ***&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#step22&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;#ei&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;CS 0 vendor id 0xec.......&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;CS 0 device id 0xda.......&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;doing Super block Sanity checks... location 4&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;doing Managment block Sanity checks ...&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;CS 1 vendor id 0x00.......&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;CS 1 device id 0x00.......&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;=====================================&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;Build date=Jun 15 2012, time=04:10:58&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;=====================================&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;type c to quit AUTOBOOT&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;88:E0:A0:08:C5:D1&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;romfs&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  Checking zboot signature..  it&amp;#39;&lt;/span&gt;s a zboot file, signature OK.
+ZBOOT_ATTR_PHY_LOAD OFF
+&lt;span class=&quot;nv&quot;&gt;g_load_addr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0x80000000,g_base_addr&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0x830000b0,count&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0x0070d2d4
+Waiting &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; XLOAD completion.
+XLOAD &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;. &lt;span class=&quot;nv&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0x6 .. OK.
+ZBOOT_ATTR_GZIP ON
+  Decompressing to 0x84000000 .. 
+Output length: 0x009dfcb5&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10353845&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Decompressing decrypted data from 0xa70004c4 to 0x84000000 OK&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;由于最后无法输入任何东西，至此只好放弃了。&lt;/p&gt;
 </content>
  </entry>
  
