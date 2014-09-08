@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      1Few &middot; 每天进步一点点
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.useso.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-0b">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          1Few
+        </a>
+      </h1>
+      <p class="lead">One of a few people likes one of a few things.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/tags/">Tags</a>
+          
+        
+      
+        
+          
+        
+      
+
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2010/opencv-IPlImage-to-tiff">
+        OpenCV的IPlImage保存为CCITT4压缩的TIFF格式
+      </a>
+    </h1>
+
+    <span class="post-date">16 Sep 2010</span>
+
+    <p>有一点要知道：提供给 libtiff 和从 libtiff 返回的缓冲区都是每个字节中包含 8 个像素，而8位灰度图是1字节只包含一个像素
+OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8个像素放入一个字节中，使用位运算即可。</p>
+
+
+    <a href="/2010/opencv-IPlImage-to-tiff">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2010/cpp-test-memory-leaks">
+        C++简的单测试内存泄漏
+      </a>
+    </h1>
+
+    <span class="post-date">16 Sep 2010</span>
+
+    <p>一直用.net，不担心内存问题，用上了C++，内存问题就要上心了。</p>
+
+<p>有句话叫做：</p>
+
+<blockquote>
+  <p>A little memory leak is no big thing.</p>
+</blockquote>
+
+<p>但是我们还是要尽量管理好自己的内存。</p>
+
+
+    <a href="/2010/cpp-test-memory-leaks">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2010/cppbit">
+        重新学习位运算
+      </a>
+    </h1>
+
+    <span class="post-date">07 Sep 2010</span>
+
+    <p>在学校就没有好好学清楚过位运算，今天重新学习了一下，希望所理解的都是正确的，将来再来看看。</p>
+
+
+    <a href="/2010/cppbit">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2010/opencv-cannot-read-tiff">
+        解决OpenCV无法读取部分tiff文件的问题
+      </a>
+    </h1>
+
+    <span class="post-date">24 Aug 2010</span>
+
+    <p>有这样一段：</p>
+
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#ifndef    CCITT_SUPPORT </span>
+<span class="cp">#define    TIFFInitCCITTRLE    NotConfigured </span>
+<span class="cp">#define    TIFFInitCCITTRLEW    NotConfigured </span>
+<span class="cp">#define    TIFFInitCCITTFax3    NotConfigured </span>
+<span class="cp">#define    TIFFInitCCITTFax4    NotConfigured </span>
+<span class="cp">#endif</span></code></pre></div>
+
+
+    <a href="/2010/opencv-cannot-read-tiff">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2010/Image-FromFile-insufficient-memory">
+        Image.FromFile报内存不足的异常
+      </a>
+    </h1>
+
+    <span class="post-date">28 Jul 2010</span>
+
+    <p>发现用Image.FromFile打开图片的时候会报内存不足的异常，感到很奇怪，实际上不应该是内存不足，而是图片有错。</p>
+
+<p>所以如果用FileStream来打开图片，才可以得到更有意义的异常信息。</p>
+
+
+    <a href="/2010/Image-FromFile-insufficient-memory">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
+    
+      <a class="pagination-item newer" href="/">Newer</a>
+    
+  
+</div>
+
+    </div>
+
+  </body>
+</html>

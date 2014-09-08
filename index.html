@@ -72,6 +72,10 @@
           
         
       
+        
+          
+        
+      
 
     </nav>
 
@@ -85,7 +89,7 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/prism-nested-region-not-found-in-regionmanager">
+      <a href="/2014/prism-nested-region-not-found-in-regionmanager">
         解決Prism中嵌套的Region在RegionManager中找不到的問題
       </a>
     </h1>
@@ -101,14 +105,93 @@
 其中，Module A內部還有 Region A1和A2，現在需要Region A1的內容導航爲其他內容。</p>
 
 
-    <a href="/prism-nested-region-not-found-in-regionmanager">Continue reading &gt;&gt;&gt;</a>
+    <a href="/2014/prism-nested-region-not-found-in-regionmanager">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/tianyi-number-helper">
+        帮助选择电信手机号的小程序
+      </a>
+    </h1>
+
+    <span class="post-date">09 Aug 2014</span>
+
+    <p>点击Search，向电信网站索取数据，可以把获取次数调得大些，不过建议不超过1000次，因为同时发出1000个http请求，对服务器有压力，而且，次数越多重复的号码获取得越来越多，新号码就越来越少。</p>
+
+<p>Visual Studio 2013下开发，WPF/C#。
+源代码在 <a href="https://github.com/syler/tianyinumbers">github</a>，暂时没有提供编译好的二进制exe。</p>
+
+
+    <a href="/2014/tianyi-number-helper">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/kindle3-page-settings-in-word">
+        Kindle 3文章在word中的设置
+      </a>
+    </h1>
+
+    <span class="post-date">02 Aug 2014</span>
+
+    <p>今天量了一下, kindle 3的屏幕大小是92*122毫米，每行显示23个字比较合适，页边距4面都是7毫米。雅黑字体显示合适。</p>
+
+<p>在word里设置页面的大小9.2x12.2厘米，调整字体10号，可能比较合适，嫌字大的还可尝试更小字号。</p>
+
+<p>使用思源黑体的话，可以尝试思源黑体Normal 9号字</p>
+
+
+    <a href="/2014/kindle3-page-settings-in-word">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2012/log4cxx-sqlite3-for-arm">
+        编译log4cxx 和 sqlite3到arm平台
+      </a>
+    </h1>
+
+    <span class="post-date">07 Feb 2012</span>
+
+    <p>要编译这两种库，只需要configure之后再用make指令就行了，麻烦就麻烦在confgure时怎么指定参数，我使用下面的方式来指定./configure时的参数。</p>
+
+<h3 id="log4cxxarm-linux">编译log4cxx到arm-linux平台</h3>
+
+<p>在有了arm-linux编译器的情况下，共有三项配置来编译log4cxx:</p>
+
+<h4 id="apr-configure-command">1. apr configure command:</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --host<span class="o">=</span>arm-none-linux-gnueab --target<span class="o">=</span>arm-none-linux-gnueab --prefix<span class="o">=</span>/usr/local/apr <span class="nv">CC</span><span class="o">=</span>arm-none-linux-gnueabi-gcc <span class="nv">CXX</span><span class="o">=</span>arm-none-linux-gnueabi-g++ <span class="nv">ac_cv_file__dev_zero</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">ac_cv_func_setpgrp_void</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">apr_cv_process_shared_works</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">apr_cv_mutex_robust_shared</span><span class="o">=</span><span class="s2">&quot;no&quot;</span> <span class="nv">apr_cv_tcp_nodelay_with_cork</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">ac_cv_sizeof_struct_iovec</span><span class="o">=</span><span class="s2">&quot;8&quot;</span> <span class="nv">apr_cv_mutex_recursive</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span></code></pre></div>
+
+
+    <a href="/2012/log4cxx-sqlite3-for-arm">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2010/libtiff-394-for-vc2008">
+        libtiff 3.9.4 VC 2008编译通过版
+      </a>
+    </h1>
+
+    <span class="post-date">14 Oct 2010</span>
+
+    <p>一直以来从libtiff官网下载的libtiff在VC2008中编译不过，今天终于调试通过，需要的在这里下载项目文件。</p>
+
+<p><a href="https://onedrive.live.com/redir?resid=CFA41C888DEC156C!445&amp;authkey=!AA7uzhRF1F1KfCk&amp;ithint=file%2c7z">libtiff3.9.4-vc2008.7z</a></p>
+
+<p>也可用这个CMakeLists.txt文件</p>
+
+
+    <a href="/2010/libtiff-394-for-vc2008">Continue reading &gt;&gt;&gt;</a>
   </div>
   
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>

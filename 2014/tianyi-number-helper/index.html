@@ -11,7 +11,7 @@
 
   <title>
     
-      解決Prism中嵌套的Region在RegionManager中找不到的問題 &middot; 1Few
+      帮助选择电信手机号的小程序 &middot; 1Few
     
   </title>
 
@@ -72,6 +72,10 @@
           
         
       
+        
+          
+        
+      
 
     </nav>
 
@@ -82,34 +86,20 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">解決Prism中嵌套的Region在RegionManager中找不到的問題</h1>
-  <span class="post-date">25
+  <h1 class="post-title">帮助选择电信手机号的小程序</h1>
+  <span class="post-date">9
     August 2014</span>
-  <p>示意圖
-<img src="https://farm6.staticflickr.com/5576/15167455132_c62738dbc4_o.png" alt="示意圖" title="示意圖" /></p>
+  <p>点击Search，向电信网站索取数据，可以把获取次数调得大些，不过建议不超过1000次，因为同时发出1000个http请求，对服务器有压力，而且，次数越多重复的号码获取得越来越多，新号码就越来越少。</p>
 
-<h2 id="section">解釋</h2>
+<p>Visual Studio 2013下开发，WPF/C#。
+源代码在 <a href="https://github.com/syler/tianyinumbers">github</a>，暂时没有提供编译好的二进制exe。
+<!--more-->
+<img src="http://ww3.sinaimg.cn/large/4dcfc0e3gw1ek56p5u3htj20el09qmye.jpg" alt="界面" title="帮助用户选择号码的小程序" />
+Save可以将获取到的号码保存到一个文件</p>
 
-<p>Region A裝載ModuleA，RegionB裝載ModuleB，Region C裝載Module C
-其中，Module A內部還有 Region A1和A2，現在需要Region A1的內容導航爲其他內容。
-<!--more--></p>
+<p>绿色的Drag To Load Saved是将一个保存好的文件加载到程序中。</p>
 
-<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">this</span><span class="p">.</span><span class="n">regionManager</span><span class="p">.</span><span class="n">RegisterViewWithRegion</span><span class="p">(</span><span class="n">RegionA1</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="n">RegionA1Content1</span><span class="p">));</span></code></pre></div>
-
-<p>頁面可以正常顯示，RegionA1Content顯示在RegionA1中，但是用RequestNavigate進行導航時失敗，經查是由於RegionManager不存在RegionWizardMainContent這個Region。</p>
-
-<p>導航語句爲：</p>
-
-<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">this</span><span class="p">.</span><span class="n">regionManager</span><span class="p">.</span><span class="n">RequestNavigate</span><span class="p">(</span><span class="n">RegionA1</span><span class="p">,</span> <span class="s">&quot;RegionA1Content2&quot;</span><span class="p">);</span></code></pre></div>
-
-<p>上一句是失敗的。</p>
-
-<h2 id="section-1">解決方法</h2>
-
-<p>使用RegionManager.SetRegionManager：</p>
-
-<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="n">RegionManager</span><span class="p">.</span><span class="n">SetRegionManager</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">regionA1Region</span><span class="p">,</span> <span class="n">regionManager</span><span class="p">);</span></code></pre></div>
-
+<p>过滤是从已获得的号码中筛选心仪的号码。</p>
 
   <hr/>
   <h3 id="tags">Tag</h3>
@@ -119,8 +109,6 @@
   <div class="p_tags">
     
       <a href="/tags#.Net">.Net</a>
-    
-      <a href="/tags#Prism">Prism</a>
     
   </div>
 
@@ -151,6 +139,33 @@
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/prism-nested-region-not-found-in-regionmanager">
+            解決Prism中嵌套的Region在RegionManager中找不到的問題
+            <small>25 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/kindle3-page-settings-in-word">
+            Kindle 3文章在word中的设置
+            <small>02 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2012/log4cxx-sqlite3-for-arm">
+            编译log4cxx 和 sqlite3到arm平台
+            <small>07 Feb 2012</small>
+          </a>
+        </h3>
+      </li>
     
   </ul>
 </div>

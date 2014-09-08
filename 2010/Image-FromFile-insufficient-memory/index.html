@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Image.FromFile报内存不足的异常 &middot; 1Few
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.useso.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-0b">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          1Few
+        </a>
+      </h1>
+      <p class="lead">One of a few people likes one of a few things.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/tags/">Tags</a>
+          
+        
+      
+        
+          
+        
+      
+
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Image.FromFile报内存不足的异常</h1>
+  <span class="post-date">28
+    July 2010</span>
+  <p>发现用Image.FromFile打开图片的时候会报内存不足的异常，感到很奇怪，实际上不应该是内存不足，而是图片有错。</p>
+
+<p>所以如果用FileStream来打开图片，才可以得到更有意义的异常信息。
+<!--more--></p>
+
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="n">Bitmap</span> <span class="nf">OpenImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">fileName</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">Bitmap</span> <span class="n">dstImage</span> <span class="p">=</span> <span class="p">(</span><span class="n">Bitmap</span><span class="p">)</span><span class="n">Image</span><span class="p">.</span><span class="n">FromFile</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span>
+<span class="k">return</span> <span class="n">dstImage</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="n">Image</span> <span class="nf">OpenImageWithFileStream</span><span class="p">(</span><span class="kt">string</span> <span class="n">filename</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">FileStream</span> <span class="n">fs</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileStream</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span> <span class="n">FileAccess</span><span class="p">.</span><span class="n">Read</span><span class="p">,</span> <span class="n">FileShare</span><span class="p">.</span><span class="n">Read</span><span class="p">);</span>
+<span class="kt">byte</span><span class="p">[]</span> <span class="n">buffer</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="n">fs</span><span class="p">.</span><span class="n">Length</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">length</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">ibyteRead</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">do</span>
+<span class="p">{</span>
+<span class="n">length</span> <span class="p">=</span> <span class="n">fs</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">ibyteRead</span><span class="p">,</span> <span class="n">buffer</span><span class="p">.</span><span class="n">Length</span> <span class="p">-</span> <span class="n">ibyteRead</span><span class="p">);</span>
+<span class="n">ibyteRead</span> <span class="p">+=</span> <span class="n">length</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">);</span>
+<span class="n">Image</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">FromStream</span><span class="p">(</span><span class="n">fs</span><span class="p">);</span>
+<span class="n">fs</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+<span class="n">fs</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+<span class="k">return</span> <span class="n">bitmap</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+  <hr/>
+  <h3 id="tags">Tag</h3>
+  
+    
+    
+  <div class="p_tags">
+    
+      <a href="/tags#.Net">.Net</a>
+    
+  </div>
+
+
+
+  
+</div>
+
+
+  
+    <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '1few'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+  
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/prism-nested-region-not-found-in-regionmanager">
+            解決Prism中嵌套的Region在RegionManager中找不到的問題
+            <small>25 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/tianyi-number-helper">
+            帮助选择电信手机号的小程序
+            <small>09 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/kindle3-page-settings-in-word">
+            Kindle 3文章在word中的设置
+            <small>02 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

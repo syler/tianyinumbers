@@ -11,7 +11,7 @@
 
   <title>
     
-      Tags &middot; 1Few
+      解决OpenCV无法读取部分tiff文件的问题 &middot; 1Few
     
   </title>
 
@@ -68,7 +68,7 @@
       
         
           
-            <a class="sidebar-nav-item active" href="/tags/">Tags</a>
+            <a class="sidebar-nav-item" href="/tags/">Tags</a>
           
         
       
@@ -85,86 +85,46 @@
 
 
     <div class="content container">
-      <div class="page">
-  <h1 class="page-title">Tags</h1>
-  <div class="page">
+      <div class="post">
+  <h1 class="post-title">解决OpenCV无法读取部分tiff文件的问题</h1>
+  <span class="post-date">24
+    August 2010</span>
+  <p>有这样一段：</p>
+
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#ifndef    CCITT_SUPPORT </span>
+<span class="cp">#define    TIFFInitCCITTRLE    NotConfigured </span>
+<span class="cp">#define    TIFFInitCCITTRLEW    NotConfigured </span>
+<span class="cp">#define    TIFFInitCCITTFax3    NotConfigured </span>
+<span class="cp">#define    TIFFInitCCITTFax4    NotConfigured </span>
+<span class="cp">#endif</span></code></pre></div>
+
+<!--more-->
+<p>即没有define就执行NotConfigured函数，而在tiffconf.h中就有这样的定义</p>
+
+<p>所以，在tiff.h中加入一句:</p>
+
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &quot;tiffconf.h&quot;</span></code></pre></div>
+
+<p>然后要在libtiff的项目中添加附加包含目录：……3rdpartylibjpeg</p>
+
+<p>在libtiff项目属性中附加目录
+重新编译openCV就可以了
+可以下载我编译好的文件<a href="https://onedrive.live.com/redir?resid=CFA41C888DEC156C!439&amp;authkey=!AHqOjBVGUdEEGSg&amp;ithint=folder%2c7z">OpenCV2.1_binary.7z</a></p>
+
+  <hr/>
+  <h3 id="tags">Tag</h3>
   
-  
-  <div class="t_cloud">
     
-      
-      <a href="/tags#.Net" class="t_cloud_size_3">.Net</a>
     
-      
-      <a href="/tags#C++" class="t_cloud_size_6">C++</a>
+  <div class="p_tags">
     
-      
-      <a href="/tags#Linux" class="t_cloud_size_1">Linux</a>
-    
-      
-      <a href="/tags#Reading" class="t_cloud_size_1">Reading</a>
-    
-      
-      <a href="/tags#Prism" class="t_cloud_size_1">Prism</a>
+      <a href="/tags#C++">C++</a>
     
   </div>
 
 
 
-  <div class="t_list">
   
-    <h2 id=".Net">.Net</h2>
-    <ul>
-      
-        <li itemprop="blogPost"><a href="/2014/prism-nested-region-not-found-in-regionmanager/">解決Prism中嵌套的Region在RegionManager中找不到的問題</a></li>
-      
-        <li itemprop="blogPost"><a href="/2014/tianyi-number-helper/">帮助选择电信手机号的小程序</a></li>
-      
-        <li itemprop="blogPost"><a href="/2010/Image-FromFile-insufficient-memory/">Image.FromFile报内存不足的异常</a></li>
-      
-    </ul>
-  
-    <h2 id="C++">C++</h2>
-    <ul>
-      
-        <li itemprop="blogPost"><a href="/2012/log4cxx-sqlite3-for-arm/">编译log4cxx 和 sqlite3到arm平台</a></li>
-      
-        <li itemprop="blogPost"><a href="/2010/libtiff-394-for-vc2008/">libtiff 3.9.4 VC 2008编译通过版</a></li>
-      
-        <li itemprop="blogPost"><a href="/2010/opencv-IPlImage-to-tiff/">OpenCV的IPlImage保存为CCITT4压缩的TIFF格式</a></li>
-      
-        <li itemprop="blogPost"><a href="/2010/cpp-test-memory-leaks/">C++简的单测试内存泄漏</a></li>
-      
-        <li itemprop="blogPost"><a href="/2010/cppbit/">重新学习位运算</a></li>
-      
-        <li itemprop="blogPost"><a href="/2010/opencv-cannot-read-tiff/">解决OpenCV无法读取部分tiff文件的问题</a></li>
-      
-    </ul>
-  
-    <h2 id="Linux">Linux</h2>
-    <ul>
-      
-        <li itemprop="blogPost"><a href="/2012/log4cxx-sqlite3-for-arm/">编译log4cxx 和 sqlite3到arm平台</a></li>
-      
-    </ul>
-  
-    <h2 id="Reading">Reading</h2>
-    <ul>
-      
-        <li itemprop="blogPost"><a href="/2014/kindle3-page-settings-in-word/">Kindle 3文章在word中的设置</a></li>
-      
-    </ul>
-  
-    <h2 id="Prism">Prism</h2>
-    <ul>
-      
-        <li itemprop="blogPost"><a href="/2014/prism-nested-region-not-found-in-regionmanager/">解決Prism中嵌套的Region在RegionManager中找不到的問題</a></li>
-      
-    </ul>
-  
-  </div>
-</div>
-
 </div>
 
 
@@ -186,6 +146,39 @@
   
 
 
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/prism-nested-region-not-found-in-regionmanager">
+            解決Prism中嵌套的Region在RegionManager中找不到的問題
+            <small>25 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/tianyi-number-helper">
+            帮助选择电信手机号的小程序
+            <small>09 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/kindle3-page-settings-in-word">
+            Kindle 3文章在word中的设置
+            <small>02 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
 
     </div>
 
