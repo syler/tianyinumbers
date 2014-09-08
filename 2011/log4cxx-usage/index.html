@@ -11,7 +11,7 @@
 
   <title>
     
-      C++简的单测试内存泄漏 &middot; 1Few
+      log4cxx 使用方法 &middot; 1Few
     
   </title>
 
@@ -90,45 +90,68 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">C++简的单测试内存泄漏</h1>
-  <span class="post-date">16
-    September 2010</span>
-  <p>一直用.net，不担心内存问题，用上了C++，内存问题就要上心了。</p>
+  <h1 class="post-title">log4cxx 使用方法</h1>
+  <span class="post-date">14
+    July 2011</span>
+  <h4 id="section">下载链接:</h4>
 
-<p>有句话叫做：</p>
+<p><a href="http://apr.apache.org/download.cgi">apr</a>
+<a href="http://logging.apache.org/log4cxx/download.html">log4cxx</a></p>
+
+<h4 id="apr-145">第一步安装apr-1.4.5，顺序不能错，它必须首选安装</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$tar</span> -zxvf apr-1.4.5.tar.gz
+<span class="nv">$cd</span> apr-1.4.5
+<span class="nv">$.</span>/configure --prefix<span class="o">=</span>/usr/local/apr
+<span class="nv">$make</span>
+<span class="nv">$su</span> root
+<span class="nv">$make</span> install</code></pre></div>
+
+<h4 id="apr-util-1312">然后安装apr-util-1.3.12</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$tar</span> -zxvf apr-util-1.3.12.tar.gz
+<span class="nv">$cd</span> apr-util-1.3.12
+<span class="nv">$.</span>/configure --prefix<span class="o">=</span>/usr/local/apr-util --with-apr<span class="o">=</span>/usr/local/apr
+<span class="nv">$make</span>
+<span class="nv">$su</span> root
+<span class="nv">$make</span> install</code></pre></div>
+
+<p>configure选项 –with-apr=/usr/local 指定apr库的位置
+<!--more-->
+#### 安装log4cxx了</p>
+
+<p>在这之前,必须要改三个文件:</p>
 
 <blockquote>
-  <p>A little memory leak is no big thing.</p>
+  <p>$vim src/examples/cpp/console.cpp 在这个文件里添加<code>#include &lt;stdio.h&gt;</code>和<code>#include &lt;string.h&gt;</code><br />
+$vim src/main/cpp/socketoutputstream.cpp 在这个文件里添加<code>#include &lt;string.h&gt;</code><br />
+$vim src/main/cpp/inputstreamreader.cpp 在这个文件里添加<code>#include &lt;string.h&gt;</code></p>
 </blockquote>
 
-<p>但是我们还是要尽量管理好自己的内存。
-<!--more--></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$tar</span> -zxvf apache-log4cxx-0.10.0.tar.gz
+<span class="nv">$cd</span> apache-log4cxx-0.10.0
+<span class="nv">$.</span>/configure --prefix<span class="o">=</span>/usr/local/log4cxx --with-apr<span class="o">=</span>/usr/local/apr --with-apr-util<span class="o">=</span>/usr/local/apr-util
 
-<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include </span>
-<span class="cp">#include </span>
+<span class="nv">$sudo</span> make
+<span class="nv">$su</span> root
+<span class="nv">$make</span> install</code></pre></div>
 
-<span class="p">....</span>
+<p>最后,在terminal执行:</p>
 
-<span class="n">_CrtMemState</span> <span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">s3</span><span class="p">;</span>
-<span class="n">_CrtMemCheckpoint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ldconfig</code></pre></div>
 
+<p>如果
+在执行的时候，你可能会得到下面的错误：</p>
 
-<span class="p">.......</span>
+<div class="message">
+error while loading shared libraries: liblog4cxx.so.10: cannot open shared object file: No such file or directory
+</div>
 
-<span class="n">_CrtMemCheckpoint</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">);</span>
+<p>查找半天发现在/usr/local/lib下有liblog4cxx.so.10文件，这个问题是因为你没有设置LD_LIBRARY_PATH环境变量造成的。</p>
 
-<span class="k">if</span><span class="p">(</span><span class="n">_CrtMemDifference</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s3</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">s2</span><span class="p">))</span>
-<span class="p">{</span>
-	<span class="n">_CrtMemDumpStatistics</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s3</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Warning: this program has a memory leak.n&quot;</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">else</span>
-<span class="p">{</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Congratulations: there is no memory leak.n&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<p>执行</p>
 
-<span class="c1">//这句话不是用来检查漏泄，但也很常用。</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">_CrtCheckMemory</span><span class="p">());</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/lib</code></pre></div>
 
 
   <hr/>
@@ -137,6 +160,8 @@
     
     
   <div class="p_tags">
+    
+      <a href="/tags#Linux">Linux</a>
     
       <a href="/tags#C++">C++</a>
     

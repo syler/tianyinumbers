@@ -4,7 +4,7 @@
  <title>1Few</title>
  <link href="http://www.1few.com/atom.xml" rel="self"/>
  <link href="http://www.1few.com/"/>
- <updated>2014-09-08T21:32:19+08:00</updated>
+ <updated>2014-09-08T22:30:49+08:00</updated>
  <id>http://www.1few.com</id>
  <author>
    <name>syler</name>
@@ -109,6 +109,74 @@ Save可以将获取到的号码保存到一个文件&lt;/p&gt;
 &lt;h3 id=&quot;sqlite3arm&quot;&gt;编译sqlite3到arm平台&lt;/h3&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;./configure &lt;span class=&quot;nv&quot;&gt;CC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm-none-linux-gnueabi-gcc &lt;span class=&quot;nv&quot;&gt;CXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm-none-linux-gnueabi-g++ --host&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm-none-linux&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>log4cxx 使用方法</title>
+   <link href="http://www.1few.com/2011/log4cxx-usage"/>
+   <updated>2011-07-14T00:00:00+08:00</updated>
+   <id>http://www.1few.com/2011/log4cxx-usage</id>
+   <content type="html">&lt;h4 id=&quot;section&quot;&gt;下载链接:&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://apr.apache.org/download.cgi&quot;&gt;apr&lt;/a&gt;
+&lt;a href=&quot;http://logging.apache.org/log4cxx/download.html&quot;&gt;log4cxx&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;apr-145&quot;&gt;第一步安装apr-1.4.5，顺序不能错，它必须首选安装&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$tar&lt;/span&gt; -zxvf apr-1.4.5.tar.gz
+&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; apr-1.4.5
+&lt;span class=&quot;nv&quot;&gt;$.&lt;/span&gt;/configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/apr
+&lt;span class=&quot;nv&quot;&gt;$make&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$su&lt;/span&gt; root
+&lt;span class=&quot;nv&quot;&gt;$make&lt;/span&gt; install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;apr-util-1312&quot;&gt;然后安装apr-util-1.3.12&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$tar&lt;/span&gt; -zxvf apr-util-1.3.12.tar.gz
+&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; apr-util-1.3.12
+&lt;span class=&quot;nv&quot;&gt;$.&lt;/span&gt;/configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/apr-util --with-apr&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/apr
+&lt;span class=&quot;nv&quot;&gt;$make&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$su&lt;/span&gt; root
+&lt;span class=&quot;nv&quot;&gt;$make&lt;/span&gt; install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;configure选项 –with-apr=/usr/local 指定apr库的位置
+&lt;!--more--&gt;
+#### 安装log4cxx了&lt;/p&gt;
+
+&lt;p&gt;在这之前,必须要改三个文件:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$vim src/examples/cpp/console.cpp 在这个文件里添加&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;&lt;/code&gt;和&lt;code&gt;#include &amp;lt;string.h&amp;gt;&lt;/code&gt;&lt;br /&gt;
+$vim src/main/cpp/socketoutputstream.cpp 在这个文件里添加&lt;code&gt;#include &amp;lt;string.h&amp;gt;&lt;/code&gt;&lt;br /&gt;
+$vim src/main/cpp/inputstreamreader.cpp 在这个文件里添加&lt;code&gt;#include &amp;lt;string.h&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$tar&lt;/span&gt; -zxvf apache-log4cxx-0.10.0.tar.gz
+&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; apache-log4cxx-0.10.0
+&lt;span class=&quot;nv&quot;&gt;$.&lt;/span&gt;/configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/log4cxx --with-apr&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/apr --with-apr-util&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/apr-util
+
+&lt;span class=&quot;nv&quot;&gt;$sudo&lt;/span&gt; make
+&lt;span class=&quot;nv&quot;&gt;$su&lt;/span&gt; root
+&lt;span class=&quot;nv&quot;&gt;$make&lt;/span&gt; install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;最后,在terminal执行:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo ldconfig&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;如果
+在执行的时候，你可能会得到下面的错误：&lt;/p&gt;
+
+&lt;div class=&quot;message&quot;&gt;
+error while loading shared libraries: liblog4cxx.so.10: cannot open shared object file: No such file or directory
+&lt;/div&gt;
+
+&lt;p&gt;查找半天发现在/usr/local/lib下有liblog4cxx.so.10文件，这个问题是因为你没有设置LD_LIBRARY_PATH环境变量造成的。&lt;/p&gt;
+
+&lt;p&gt;执行&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/lib&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </content>
  </entry>
