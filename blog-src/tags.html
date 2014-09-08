@@ -1,0 +1,20 @@
+---
+layout: page
+change_frequency: weekly
+title: Tags
+---
+
+<div class="page">
+  {% assign tags_list = site.tags %}
+  {% include JB/tags_list %}
+  <div class="t_list">
+  {% for tag in site.tags %}
+    <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+    <ul>
+      {% for node in tag[1] %}
+        <li itemprop="blogPost"><a href="{{ BASE_PATH }}{{node.url}}/">{{node.title}}</a></li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+  </div>
+</div>

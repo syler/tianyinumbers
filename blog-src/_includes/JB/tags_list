@@ -1,0 +1,16 @@
+{% if tags_list.first[0] == null %}
+  <div class="p_tags">
+    {% for tag in tags_list %}
+      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}">{{ tag }}</a>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="t_cloud">
+    {% for tag in tags_list %}
+      {% assign count = tag[1].size %}
+      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}" class="t_cloud_size_{% if count < 10 %}{{ count }}{% else %}{{ 10 }}
+      {% endif %}">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+{% endif %}
+{% assign tags_list = nil %}
