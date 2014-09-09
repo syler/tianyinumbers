@@ -428,3 +428,45 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+    .t_cloud {
+      margin:0 0 70px;
+      a { margin:0 10px 0 0; line-height:33px; white-space:nowrap; border:0; }
+    }
+    .t_cloud_size_1 { font-size:100%; }
+    .t_cloud_size_2 {
+      font-size:125%;
+      &:hover { padding-bottom:4px !important; }
+    }
+    .t_cloud_size_3 {
+      font-size:150%;
+      &:hover { padding-bottom:5px !important; }
+    }
+    .t_cloud_size_4 {
+      font-size:175%;
+      &:hover { padding-bottom:5px !important; }
+    }
+    .t_cloud_size_5 {
+      font-size:200%;
+      &:hover { padding-bottom:6px !important; }
+    }
+    .t_cloud_size_6 {
+      font-size:225%;
+      &:hover { padding-bottom:7px !important; }
+    }
+    .t_cloud_size_7 {
+      font-size:250%;
+      &:hover { padding-bottom:8px !important; }
+    }
+    .t_cloud_size_8 {
+      font-size:275%;
+      &:hover { padding-bottom:9px !important; }
+    }
+    .t_cloud_size_9 {
+      font-size:300%; line-height:125% !important;
+      &:hover { padding-bottom:9px !important; }
+    }
+    .t_cloud_size_10 {
+      font-size:325%; line-height:125% !important;
+      &:hover { padding-bottom:9px !important; }
+    }
