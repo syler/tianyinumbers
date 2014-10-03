@@ -4,7 +4,7 @@
  <title>1Few</title>
  <link href="http://www.1few.com/atom.xml" rel="self"/>
  <link href="http://www.1few.com/"/>
- <updated>2014-10-03T11:43:32+08:00</updated>
+ <updated>2014-10-03T23:48:01+08:00</updated>
  <id>http://www.1few.com</id>
  <author>
    <name>syler</name>
@@ -25,7 +25,7 @@
 
 &lt;p&gt;在Prism中经常看到这样的语句：&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;n&quot;&gt;eventAggregator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SomeCompositeEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ainstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;n&quot;&gt;eventAggregator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SomeCompositeEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aninstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;这条语句通过Prism内置的EventAggregator向所有的Module发出消息，让其他的Module知道这个状态的更新。
 但是如果此时你使用eventaggregator的时机是在Prism ready之前，或需要等待一个先决条件。

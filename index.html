@@ -116,7 +116,7 @@
 
 <p>在Prism中经常看到这样的语句：</p>
 
-<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="n">eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">SomeCompositeEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">ainstance</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="n">eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">SomeCompositeEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">aninstance</span><span class="p">);</span></code></pre></div>
 
 <p>这条语句通过Prism内置的EventAggregator向所有的Module发出消息，让其他的Module知道这个状态的更新。
 但是如果此时你使用eventaggregator的时机是在Prism ready之前，或需要等待一个先决条件。
