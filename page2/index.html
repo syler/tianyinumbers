@@ -101,6 +101,29 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2012/log4cxx-sqlite3-for-arm">
+        编译log4cxx 和 sqlite3到arm平台
+      </a>
+    </h1>
+
+    <span class="post-date">07 Feb 2012</span>
+
+    <p>要编译这两种库，只需要configure之后再用make指令就行了，麻烦就麻烦在confgure时怎么指定参数，我使用下面的方式来指定./configure时的参数。</p>
+
+<h3 id="log4cxxarm-linux">编译log4cxx到arm-linux平台</h3>
+
+<p>在有了arm-linux编译器的情况下，共有三项配置来编译log4cxx:</p>
+
+<h4 id="apr-configure-command">1. apr configure command:</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --host<span class="o">=</span>arm-none-linux-gnueab --target<span class="o">=</span>arm-none-linux-gnueab --prefix<span class="o">=</span>/usr/local/apr <span class="nv">CC</span><span class="o">=</span>arm-none-linux-gnueabi-gcc <span class="nv">CXX</span><span class="o">=</span>arm-none-linux-gnueabi-g++ <span class="nv">ac_cv_file__dev_zero</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">ac_cv_func_setpgrp_void</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">apr_cv_process_shared_works</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">apr_cv_mutex_robust_shared</span><span class="o">=</span><span class="s2">&quot;no&quot;</span> <span class="nv">apr_cv_tcp_nodelay_with_cork</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">ac_cv_sizeof_struct_iovec</span><span class="o">=</span><span class="s2">&quot;8&quot;</span> <span class="nv">apr_cv_mutex_recursive</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span></code></pre></div>
+
+
+    <a href="/2012/log4cxx-sqlite3-for-arm">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2011/log4cxx-usage">
         log4cxx 使用方法
       </a>
@@ -193,21 +216,6 @@ OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8
 
 
     <a href="/2010/cpp-test-memory-leaks">Continue reading &gt;&gt;&gt;</a>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2010/cppbit">
-        重新学习位运算
-      </a>
-    </h1>
-
-    <span class="post-date">07 Sep 2010</span>
-
-    <p>在学校就没有好好学清楚过位运算，今天重新学习了一下，希望所理解的都是正确的，将来再来看看。</p>
-
-
-    <a href="/2010/cppbit">Continue reading &gt;&gt;&gt;</a>
   </div>
   
 </div>

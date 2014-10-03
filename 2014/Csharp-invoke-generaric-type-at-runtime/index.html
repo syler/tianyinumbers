@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      C#中运行时调用泛型的方式 &middot; 1Few
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/fonts.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-0b">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          1Few
+        </a>
+      </h1>
+      <p class="lead">One of a few people likes one of a few things.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/tags/">Tags</a>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">C#中运行时调用泛型的方式</h1>
+  <span class="post-date">3
+    October 2014</span>
+  <blockquote>
+  <p>有时候你需要使用到泛型，但是泛型用到的类型只能运行时决定，可以用到这里讲的办法。</p>
+</blockquote>
+
+<h3 id="section">使用场景</h3>
+
+<p>在Prism中经常看到这样的语句：</p>
+
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="n">eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">SomeCompositeEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">ainstance</span><span class="p">);</span></code></pre></div>
+
+<p>这条语句通过Prism内置的EventAggregator向所有的Module发出消息，让其他的Module知道这个状态的更新。
+但是如果此时你使用eventaggregator的时机是在Prism ready之前，或需要等待一个先决条件。
+那么，你只能先保存下这个task。
+等条件成立后，再执行这个函数。</p>
+
+<h3 id="section-1">如何运行时使用泛型</h3>
+
+<p>使用 </p>
+
+<blockquote>
+  <p>MakeGenericMethod</p>
+</blockquote>
+
+<!--more-->
+
+<h3 id="section-2">示例代码</h3>
+
+<p>下面是一个简单代码，显示如何在运行时调用含有generic type的函数。</p>
+
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Reflection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication2</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">EventBase</span>
+    <span class="p">{</span>
+        <span class="k">protected</span> <span class="nf">EventBase</span><span class="p">()</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">IEventAggregator</span>
+    <span class="p">{</span>
+        <span class="n">TEventType</span> <span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">TEventType</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">TEventType</span> <span class="p">:</span> <span class="n">EventBase</span><span class="p">,</span> <span class="k">new</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">myEventAggreagator</span> <span class="p">:</span> <span class="n">IEventAggregator</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="n">TEventType</span> <span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">TEventType</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">TEventType</span> <span class="p">:</span> <span class="n">EventBase</span><span class="p">,</span> <span class="k">new</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">TEventType</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyClassA</span> <span class="p">:</span> <span class="n">EventBase</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Say</span><span class="p">(</span><span class="kt">string</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyClassB</span> <span class="p">:</span> <span class="n">EventBase</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Show</span><span class="p">(</span><span class="kt">string</span> <span class="n">msg</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isSay</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isSay</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Task</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="n">Type</span> <span class="n">TaskType</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">MethodName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">object</span><span class="p">[]</span> <span class="n">Parameters</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;</span> <span class="n">tasks</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;();</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">AddTask</span><span class="p">(</span><span class="k">new</span> <span class="n">Task</span> <span class="p">{</span> <span class="n">TaskType</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">MyClassA</span><span class="p">),</span> <span class="n">MethodName</span> <span class="p">=</span> <span class="s">&quot;Say&quot;</span><span class="p">,</span> <span class="n">Parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="s">&quot;hello&quot;</span> <span class="p">}</span> <span class="p">});</span>
+            <span class="n">AddTask</span><span class="p">(</span><span class="k">new</span> <span class="n">Task</span> <span class="p">{</span> <span class="n">TaskType</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">MyClassB</span><span class="p">),</span> <span class="n">MethodName</span> <span class="p">=</span> <span class="s">&quot;Show&quot;</span><span class="p">,</span> <span class="n">Parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="s">&quot; world!&quot;</span><span class="p">,</span> <span class="k">true</span> <span class="p">}</span> <span class="p">});</span>
+            <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">200</span><span class="p">);</span>
+
+            <span class="c1">// wait for a long time.</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;imagine we wait for a looong time and everything is ready.&quot;</span><span class="p">);</span>
+
+            <span class="n">RunAllTask</span><span class="p">();</span>
+
+            <span class="n">Console</span><span class="p">.</span><span class="n">Read</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">AddTask</span><span class="p">(</span><span class="n">Task</span> <span class="n">task</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">tasks</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">RunAllTask</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">task</span> <span class="k">in</span> <span class="n">tasks</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Run</span><span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="n">TaskType</span><span class="p">,</span> <span class="n">task</span><span class="p">.</span><span class="n">MethodName</span><span class="p">,</span> <span class="n">task</span><span class="p">.</span><span class="n">Parameters</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Run</span><span class="p">(</span><span class="n">Type</span> <span class="n">type</span><span class="p">,</span> <span class="kt">string</span> <span class="n">methodname</span><span class="p">,</span> <span class="kt">object</span><span class="p">[]</span> <span class="n">parameter</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">IEventAggregator</span> <span class="n">eventAggregator</span> <span class="p">=</span> <span class="k">new</span> <span class="n">myEventAggreagator</span><span class="p">();</span>
+			
+            <span class="kt">object</span> <span class="n">obj</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">IEventAggregator</span><span class="p">).</span><span class="n">GetMethod</span><span class="p">(</span><span class="s">&quot;GetEvent&quot;</span><span class="p">).</span><span class="n">MakeGenericMethod</span><span class="p">(</span><span class="n">type</span><span class="p">).</span><span class="n">Invoke</span><span class="p">(</span><span class="n">eventAggregator</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+			
+            <span class="n">MethodInfo</span> <span class="n">methodinfo</span> <span class="p">=</span> <span class="n">type</span><span class="p">.</span><span class="n">GetMethod</span><span class="p">(</span><span class="n">methodname</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">methodinfo</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">methodinfo</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">parameter</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p><img src="http://ww2.sinaimg.cn/mw690/4dcfc0e3gw1eknpu10z2tj20ij0c3wf4.jpg" alt="显示结果" title="测试程序" /></p>
+
+  <hr/>
+  <h3 id="tags">Tag</h3>
+  
+    
+    
+  <div class="p_tags">
+    
+      <a href="/tags#C#">C#</a>
+    
+      <a href="/tags#Prism">Prism</a>
+    
+      <a href="/tags#.Net">.Net</a>
+    
+  </div>
+
+
+
+  
+</div>
+
+
+  
+    <div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '1few'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+  
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/prism-nested-region-not-found-in-regionmanager">
+            解決Prism中嵌套的Region在RegionManager中找不到的問題
+            <small>25 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/tianyi-number-helper">
+            帮助选择电信手机号的小程序
+            <small>09 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2010/Image-FromFile-insufficient-memory">
+            Image.FromFile报内存不足的异常
+            <small>28 Jul 2010</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

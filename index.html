@@ -101,6 +101,42 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2014/Csharp-invoke-generaric-type-at-runtime">
+        C#中运行时调用泛型的方式
+      </a>
+    </h1>
+
+    <span class="post-date">03 Oct 2014</span>
+
+    <blockquote>
+  <p>有时候你需要使用到泛型，但是泛型用到的类型只能运行时决定，可以用到这里讲的办法。</p>
+</blockquote>
+
+<h3 id="section">使用场景</h3>
+
+<p>在Prism中经常看到这样的语句：</p>
+
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="n">eventAggregator</span><span class="p">.</span><span class="n">GetEvent</span><span class="p">&lt;</span><span class="n">SomeCompositeEvent</span><span class="p">&gt;().</span><span class="n">Publish</span><span class="p">(</span><span class="n">ainstance</span><span class="p">);</span></code></pre></div>
+
+<p>这条语句通过Prism内置的EventAggregator向所有的Module发出消息，让其他的Module知道这个状态的更新。
+但是如果此时你使用eventaggregator的时机是在Prism ready之前，或需要等待一个先决条件。
+那么，你只能先保存下这个task。
+等条件成立后，再执行这个函数。</p>
+
+<h3 id="section-1">如何运行时使用泛型</h3>
+
+<p>使用 </p>
+
+<blockquote>
+  <p>MakeGenericMethod</p>
+</blockquote>
+
+
+    <a href="/2014/Csharp-invoke-generaric-type-at-runtime">Continue reading &gt;&gt;&gt;</a>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2014/prism-nested-region-not-found-in-regionmanager">
         解決Prism中嵌套的Region在RegionManager中找不到的問題
       </a>
@@ -172,29 +208,6 @@
 
 
     <a href="/2013/magica-player-ttl">Continue reading &gt;&gt;&gt;</a>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2012/log4cxx-sqlite3-for-arm">
-        编译log4cxx 和 sqlite3到arm平台
-      </a>
-    </h1>
-
-    <span class="post-date">07 Feb 2012</span>
-
-    <p>要编译这两种库，只需要configure之后再用make指令就行了，麻烦就麻烦在confgure时怎么指定参数，我使用下面的方式来指定./configure时的参数。</p>
-
-<h3 id="log4cxxarm-linux">编译log4cxx到arm-linux平台</h3>
-
-<p>在有了arm-linux编译器的情况下，共有三项配置来编译log4cxx:</p>
-
-<h4 id="apr-configure-command">1. apr configure command:</h4>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">./configure --host<span class="o">=</span>arm-none-linux-gnueab --target<span class="o">=</span>arm-none-linux-gnueab --prefix<span class="o">=</span>/usr/local/apr <span class="nv">CC</span><span class="o">=</span>arm-none-linux-gnueabi-gcc <span class="nv">CXX</span><span class="o">=</span>arm-none-linux-gnueabi-g++ <span class="nv">ac_cv_file__dev_zero</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">ac_cv_func_setpgrp_void</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">apr_cv_process_shared_works</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">apr_cv_mutex_robust_shared</span><span class="o">=</span><span class="s2">&quot;no&quot;</span> <span class="nv">apr_cv_tcp_nodelay_with_cork</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span> <span class="nv">ac_cv_sizeof_struct_iovec</span><span class="o">=</span><span class="s2">&quot;8&quot;</span> <span class="nv">apr_cv_mutex_recursive</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span></code></pre></div>
-
-
-    <a href="/2012/log4cxx-sqlite3-for-arm">Continue reading &gt;&gt;&gt;</a>
   </div>
   
 </div>
