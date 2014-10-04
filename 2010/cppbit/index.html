@@ -1,110 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn">
-
-  <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    
-      重新学习位运算 &middot; 1Few
-    
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/hyde.css">
-  <link rel="stylesheet" href="/public/css/fonts.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
-                                 <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
-  <body class="theme-base-0b">
-
-    <div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>
-        <a href="/">
-          1Few
-        </a>
-      </h1>
-      <p class="lead">One of a few people likes one of a few things.</p>
-    </div>
-
-    <nav class="sidebar-nav">
-      <a class="sidebar-nav-item" href="/">Home</a>
-
-      
-
-      
-      
-        
-          
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/about.html">About</a>
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/tags/">Tags</a>
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-
-    </nav>
-
-    <p>&copy; 2014. All rights reserved.</p>
-  </div>
-</div>
-
-
-    <div class="content container">
-      <div class="post">
-  <h1 class="post-title">重新学习位运算</h1>
-  <span class="post-date">7
-    September 2010</span>
-  <p>在学校就没有好好学清楚过位运算，今天重新学习了一下，希望所理解的都是正确的，将来再来看看。
-<!--more--></p>
-
-<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &quot;stdafx.h&quot;</span>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn"><head><link href="http://gmpg.org/xfn/11" rel="profile"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title> 重新学习位运算 · 1Few</title><link rel="stylesheet" href="/public/css/poole.css"><link rel="stylesheet" href="/public/css/syntax.css"><link rel="stylesheet" href="/public/css/hyde.css"><link rel="stylesheet" href="/public/css/fonts.css"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png"><link rel="shortcut icon" href="/public/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml"></head><body class="theme-base-0b"><div class="sidebar"><div class="container sidebar-sticky"><div class="sidebar-about"><h1> <a href="/"> 1Few </a></h1><p class="lead">One of a few people likes one of a few things.</p></div><nav class="sidebar-nav"> <a class="sidebar-nav-item" href="/">Home</a> <a class="sidebar-nav-item" href="/about.html">About</a> <a class="sidebar-nav-item" href="/tags/">Tags</a></nav><p>© 2014. All rights reserved.</p></div></div><div class="content container"><div class="post"><h1 class="post-title">重新学习位运算</h1> <span class="post-date">7 September 2010</span><p>在学校就没有好好学清楚过位运算，今天重新学习了一下，希望所理解的都是正确的，将来再来看看。</p><div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include "stdafx.h"</span>
 <span class="cp">#include &lt;iostream&gt;</span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -140,32 +34,9 @@
 
 <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 输出4，32位机的整数是4个字节，第字节有8位，这是为什么5=0000 0000 0000 0000 0000 0000 0000 0101这么长的原因。</span>
 
-<span class="n">system</span><span class="p">(</span><span class="s">&quot;pause&quot;</span><span class="p">);</span>
+<span class="n">system</span><span class="p">(</span><span class="s">"pause"</span><span class="p">);</span>
 <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-
-  <hr/>
-  <h3 id="tags">Tag</h3>
-  
-    
-    
-  <div class="p_tags">
-    
-      <a href="/tags#C++">C++</a>
-    
-  </div>
-
-
-
-  
-</div>
-
-
-  
-    <div id="disqus_thread"></div>
-
-<script type="text/javascript">
+<span class="p">}</span></code></pre></div><hr/><h3 id="tags">Tag</h3><div class="p_tags"> <a href="/tags#C++">C++</a></div></div><div id="disqus_thread"></div><script>
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = '1few'; // required: replace example with your forum shortname
 
@@ -175,46 +46,4 @@
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
-
-  
-
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2012/log4cxx-sqlite3-for-arm">
-            编译log4cxx 和 sqlite3到arm平台
-            <small>07 Feb 2012</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2011/log4cxx-usage">
-            log4cxx 使用方法
-            <small>14 Jul 2011</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2010/libtiff-394-for-vc2008">
-            libtiff 3.9.4 VC 2008编译通过版
-            <small>14 Oct 2010</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
-</div>
-
-    </div>
-
-  </body>
-</html>
+</script><div class="related"><h2>Related Posts</h2><ul class="related-posts"><li><h3> <a href="/2012/log4cxx-sqlite3-for-arm"> 编译log4cxx 和 sqlite3到arm平台 <small>07 Feb 2012</small> </a></h3></li><li><h3> <a href="/2011/log4cxx-usage"> log4cxx 使用方法 <small>14 Jul 2011</small> </a></h3></li><li><h3> <a href="/2010/libtiff-394-for-vc2008"> libtiff 3.9.4 VC 2008编译通过版 <small>14 Oct 2010</small> </a></h3></li></ul></div></div></body></html>

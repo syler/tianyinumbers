@@ -1,119 +1,12 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn">
-
-  <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    
-      OpenCV的IPlImage保存为CCITT4压缩的TIFF格式 &middot; 1Few
-    
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/hyde.css">
-  <link rel="stylesheet" href="/public/css/fonts.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
-                                 <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
-  <body class="theme-base-0b">
-
-    <div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>
-        <a href="/">
-          1Few
-        </a>
-      </h1>
-      <p class="lead">One of a few people likes one of a few things.</p>
-    </div>
-
-    <nav class="sidebar-nav">
-      <a class="sidebar-nav-item" href="/">Home</a>
-
-      
-
-      
-      
-        
-          
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/about.html">About</a>
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/tags/">Tags</a>
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-
-    </nav>
-
-    <p>&copy; 2014. All rights reserved.</p>
-  </div>
-</div>
-
-
-    <div class="content container">
-      <div class="post">
-  <h1 class="post-title">OpenCV的IPlImage保存为CCITT4压缩的TIFF格式</h1>
-  <span class="post-date">16
-    September 2010</span>
-  <p>有一点要知道：提供给 libtiff 和从 libtiff 返回的缓冲区都是每个字节中包含 8 个像素，而8位灰度图是1字节只包含一个像素
-OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8个像素放入一个字节中，使用位运算即可。
-<!--more--></p>
-
-<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">save</span><span class="p">(</span><span class="n">IplImage</span><span class="o">*</span> <span class="n">img</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn"><head><link href="http://gmpg.org/xfn/11" rel="profile"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title> OpenCV的IPlImage保存为CCITT4压缩的TIFF格式 · 1Few</title><link rel="stylesheet" href="/public/css/poole.css"><link rel="stylesheet" href="/public/css/syntax.css"><link rel="stylesheet" href="/public/css/hyde.css"><link rel="stylesheet" href="/public/css/fonts.css"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png"><link rel="shortcut icon" href="/public/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml"></head><body class="theme-base-0b"><div class="sidebar"><div class="container sidebar-sticky"><div class="sidebar-about"><h1> <a href="/"> 1Few </a></h1><p class="lead">One of a few people likes one of a few things.</p></div><nav class="sidebar-nav"> <a class="sidebar-nav-item" href="/">Home</a> <a class="sidebar-nav-item" href="/about.html">About</a> <a class="sidebar-nav-item" href="/tags/">Tags</a></nav><p>© 2014. All rights reserved.</p></div></div><div class="content container"><div class="post"><h1 class="post-title">OpenCV的IPlImage保存为CCITT4压缩的TIFF格式</h1> <span class="post-date">16 September 2010</span><p>有一点要知道：提供给 libtiff 和从 libtiff 返回的缓冲区都是每个字节中包含 8 个像素，而8位灰度图是1字节只包含一个像素 OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8个像素放入一个字节中，使用位运算即可。</p><div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">void</span> <span class="nf">save</span><span class="p">(</span><span class="n">IplImage</span><span class="o">*</span> <span class="n">img</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">file</span><span class="p">)</span>
 <span class="p">{</span><span class="c1">//from http://1few.com/81.html</span>
 	<span class="n">uint32</span>	<span class="n">width</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">;</span>
-	<span class="n">uint32</span>	<span class="n">nchannels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>	
-	<span class="n">int16</span>	<span class="n">depth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>	
+	<span class="n">uint32</span>	<span class="n">nchannels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="n">int16</span>	<span class="n">depth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 	<span class="n">uint32</span>  <span class="n">rowsperstrip</span> <span class="o">=</span> <span class="p">(</span><span class="n">uint32</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 	<span class="n">uint16</span>	<span class="n">photometric</span> <span class="o">=</span> <span class="n">PHOTOMETRIC_MINISWHITE</span><span class="p">;</span>
 	<span class="n">uint16</span>	<span class="n">config</span> <span class="o">=</span> <span class="n">PLANARCONFIG_CONTIG</span><span class="p">;</span>
-	<span class="n">uint16</span>	<span class="n">fillorder</span> <span class="o">=</span> <span class="n">FILLORDER_MSB2LSB</span><span class="p">;</span> 
+	<span class="n">uint16</span>	<span class="n">fillorder</span> <span class="o">=</span> <span class="n">FILLORDER_MSB2LSB</span><span class="p">;</span>
 	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 	<span class="n">uint16</span> <span class="n">compression</span> <span class="o">=</span><span class="n">COMPRESSION_CCITTFAX4</span><span class="p">;</span>
 
@@ -124,7 +17,7 @@ OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8
 	<span class="n">nchannels</span> <span class="o">=</span> <span class="n">img</span><span class="o">-&gt;</span><span class="n">nChannels</span><span class="p">;</span>
 	<span class="n">depth</span> <span class="o">=</span> <span class="n">img</span><span class="o">-&gt;</span><span class="n">depth</span><span class="p">;</span>
 
-	<span class="n">TIFF</span>	<span class="o">*</span><span class="n">tiff</span><span class="o">=</span><span class="n">TIFFOpen</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span>
+	<span class="n">TIFF</span>	<span class="o">*</span><span class="n">tiff</span><span class="o">=</span><span class="n">TIFFOpen</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s">"w"</span><span class="p">);</span>
 	<span class="n">TIFFSetField</span><span class="p">(</span><span class="n">tiff</span><span class="p">,</span> <span class="n">TIFFTAG_BITSPERSAMPLE</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span><span class="c1">// set the size of the channels</span>
 	<span class="n">TIFFSetField</span><span class="p">(</span><span class="n">tiff</span><span class="p">,</span> <span class="n">TIFFTAG_COMPRESSION</span><span class="p">,</span> <span class="n">compression</span><span class="p">);</span>
 	<span class="n">TIFFSetField</span><span class="p">(</span><span class="n">tiff</span><span class="p">,</span> <span class="n">TIFFTAG_FILLORDER</span><span class="p">,</span> <span class="n">fillorder</span><span class="p">);</span>
@@ -191,30 +84,7 @@ OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8
 	<span class="p">}</span>
 
 	<span class="n">TIFFClose</span><span class="p">(</span><span class="n">tiff</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
-
-
-  <hr/>
-  <h3 id="tags">Tag</h3>
-  
-    
-    
-  <div class="p_tags">
-    
-      <a href="/tags#C++">C++</a>
-    
-  </div>
-
-
-
-  
-</div>
-
-
-  
-    <div id="disqus_thread"></div>
-
-<script type="text/javascript">
+<span class="p">}</span></code></pre></div><hr/><h3 id="tags">Tag</h3><div class="p_tags"> <a href="/tags#C++">C++</a></div></div><div id="disqus_thread"></div><script>
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = '1few'; // required: replace example with your forum shortname
 
@@ -224,46 +94,4 @@ OpenCV读入后都是8位灰度图，需要手动进行转换，即将临近的8
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
-
-  
-
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2012/log4cxx-sqlite3-for-arm">
-            编译log4cxx 和 sqlite3到arm平台
-            <small>07 Feb 2012</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2011/log4cxx-usage">
-            log4cxx 使用方法
-            <small>14 Jul 2011</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2010/libtiff-394-for-vc2008">
-            libtiff 3.9.4 VC 2008编译通过版
-            <small>14 Oct 2010</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
-</div>
-
-    </div>
-
-  </body>
-</html>
+</script><div class="related"><h2>Related Posts</h2><ul class="related-posts"><li><h3> <a href="/2012/log4cxx-sqlite3-for-arm"> 编译log4cxx 和 sqlite3到arm平台 <small>07 Feb 2012</small> </a></h3></li><li><h3> <a href="/2011/log4cxx-usage"> log4cxx 使用方法 <small>14 Jul 2011</small> </a></h3></li><li><h3> <a href="/2010/libtiff-394-for-vc2008"> libtiff 3.9.4 VC 2008编译通过版 <small>14 Oct 2010</small> </a></h3></li></ul></div></div></body></html>

@@ -1,119 +1,9 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn">
-
-  <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    
-      libtiff 3.9.4 VC 2008编译通过版 &middot; 1Few
-    
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/hyde.css">
-  <link rel="stylesheet" href="/public/css/fonts.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
-                                 <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
-  <body class="theme-base-0b">
-
-    <div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <h1>
-        <a href="/">
-          1Few
-        </a>
-      </h1>
-      <p class="lead">One of a few people likes one of a few things.</p>
-    </div>
-
-    <nav class="sidebar-nav">
-      <a class="sidebar-nav-item" href="/">Home</a>
-
-      
-
-      
-      
-        
-          
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/about.html">About</a>
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/tags/">Tags</a>
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-
-    </nav>
-
-    <p>&copy; 2014. All rights reserved.</p>
-  </div>
-</div>
-
-
-    <div class="content container">
-      <div class="post">
-  <h1 class="post-title">libtiff 3.9.4 VC 2008编译通过版</h1>
-  <span class="post-date">14
-    October 2010</span>
-  <p>一直以来从libtiff官网下载的libtiff在VC2008中编译不过，今天终于调试通过，需要的在这里下载项目文件。</p>
-
-<p><a href="https://onedrive.live.com/redir?resid=CFA41C888DEC156C!445&amp;authkey=!AA7uzhRF1F1KfCk&amp;ithint=file%2c7z">libtiff3.9.4-vc2008.7z</a></p>
-
-<p>也可用这个CMakeLists.txt文件
-<!--more--></p>
-
-<div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8</span><span class="p">)</span>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh-cn"><head><link href="http://gmpg.org/xfn/11" rel="profile"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><title> libtiff 3.9.4 VC 2008编译通过版 · 1Few</title><link rel="stylesheet" href="/public/css/poole.css"><link rel="stylesheet" href="/public/css/syntax.css"><link rel="stylesheet" href="/public/css/hyde.css"><link rel="stylesheet" href="/public/css/fonts.css"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png"><link rel="shortcut icon" href="/public/favicon.ico"><link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml"></head><body class="theme-base-0b"><div class="sidebar"><div class="container sidebar-sticky"><div class="sidebar-about"><h1> <a href="/"> 1Few </a></h1><p class="lead">One of a few people likes one of a few things.</p></div><nav class="sidebar-nav"> <a class="sidebar-nav-item" href="/">Home</a> <a class="sidebar-nav-item" href="/about.html">About</a> <a class="sidebar-nav-item" href="/tags/">Tags</a></nav><p>© 2014. All rights reserved.</p></div></div><div class="content container"><div class="post"><h1 class="post-title">libtiff 3.9.4 VC 2008编译通过版</h1> <span class="post-date">14 October 2010</span><p>一直以来从libtiff官网下载的libtiff在VC2008中编译不过，今天终于调试通过，需要的在这里下载项目文件。</p><p><a href="https://onedrive.live.com/redir?resid=CFA41C888DEC156C!445&amp;authkey=!AA7uzhRF1F1KfCk&amp;ithint=file%2c7z">libtiff3.9.4-vc2008.7z</a></p><p>也可用这个CMakeLists.txt文件</p><div class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8</span><span class="p">)</span>
 
 <span class="nb">project</span><span class="p">(</span><span class="s">libtiff</span><span class="p">)</span>
 
 <span class="nb">include_directories</span><span class="p">(</span>
-	<span class="s2">&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;</span>
+	<span class="s2">"${CMAKE_CURRENT_SOURCE_DIR}"</span>
 	<span class="p">)</span>
 
 <span class="nb">add_definitions</span><span class="p">(</span><span class="s">-DHAVE_STRING_H=1</span><span class="p">)</span>
@@ -171,44 +61,21 @@
     <span class="nb">set</span><span class="p">(</span><span class="s">lib_srcs</span> <span class="o">${</span><span class="nv">lib_srcs</span><span class="o">}</span> <span class="s">tif_apple.c</span><span class="p">)</span>
 <span class="nb">endif</span><span class="p">(</span><span class="s">APPLE</span><span class="p">)</span>
 
-<span class="nb">set</span><span class="p">(</span><span class="s">the_target</span> <span class="s2">&quot;libtiff&quot;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">the_target</span> <span class="s2">"libtiff"</span><span class="p">)</span>
 
 <span class="nb">if</span><span class="p">(</span><span class="s">MSVC</span><span class="p">)</span>
-    <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_FLAGS</span> <span class="s2">&quot;${CMAKE_C_FLAGS} /W3&quot;</span><span class="p">)</span>
+    <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_FLAGS</span> <span class="s2">"${CMAKE_C_FLAGS} /W3"</span><span class="p">)</span>
 <span class="nb">endif</span><span class="p">()</span>
 
 <span class="nb">if</span><span class="p">(</span><span class="s">UNIX</span><span class="p">)</span>
     <span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_COMPILER_IS_GNUCXX</span> <span class="s">OR</span> <span class="s">CV_ICC</span><span class="p">)</span>
-        <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_FLAGS</span> <span class="s2">&quot;${CMAKE_C_FLAGS} -fPIC&quot;</span><span class="p">)</span>
+        <span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_FLAGS</span> <span class="s2">"${CMAKE_C_FLAGS} -fPIC"</span><span class="p">)</span>
     <span class="nb">endif</span><span class="p">()</span>
 <span class="nb">endif</span><span class="p">()</span>
 
 <span class="nb">add_library</span><span class="p">(</span><span class="o">${</span><span class="nv">the_target</span><span class="o">}</span> <span class="s">SHARED</span> <span class="o">${</span><span class="nv">lib_srcs</span><span class="o">}</span><span class="p">)</span>
 
-<span class="nb">SET_TARGET_PROPERTIES</span><span class="p">(</span><span class="o">${</span><span class="nv">the_target</span><span class="o">}</span> <span class="s">PROPERTIES</span> <span class="s">LINK_FLAGS</span> <span class="s2">&quot;/DEF:../libtiff.def&quot;</span><span class="p">)</span></code></pre></div>
-
-
-  <hr/>
-  <h3 id="tags">Tag</h3>
-  
-    
-    
-  <div class="p_tags">
-    
-      <a href="/tags#C++">C++</a>
-    
-  </div>
-
-
-
-  
-</div>
-
-
-  
-    <div id="disqus_thread"></div>
-
-<script type="text/javascript">
+<span class="nb">SET_TARGET_PROPERTIES</span><span class="p">(</span><span class="o">${</span><span class="nv">the_target</span><span class="o">}</span> <span class="s">PROPERTIES</span> <span class="s">LINK_FLAGS</span> <span class="s2">"/DEF:../libtiff.def"</span><span class="p">)</span></code></pre></div><hr/><h3 id="tags">Tag</h3><div class="p_tags"> <a href="/tags#C++">C++</a></div></div><div id="disqus_thread"></div><script>
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = '1few'; // required: replace example with your forum shortname
 
@@ -218,46 +85,4 @@
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
-
-  
-
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2012/log4cxx-sqlite3-for-arm">
-            编译log4cxx 和 sqlite3到arm平台
-            <small>07 Feb 2012</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2011/log4cxx-usage">
-            log4cxx 使用方法
-            <small>14 Jul 2011</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2010/opencv-IPlImage-to-tiff">
-            OpenCV的IPlImage保存为CCITT4压缩的TIFF格式
-            <small>16 Sep 2010</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
-</div>
-
-    </div>
-
-  </body>
-</html>
+</script><div class="related"><h2>Related Posts</h2><ul class="related-posts"><li><h3> <a href="/2012/log4cxx-sqlite3-for-arm"> 编译log4cxx 和 sqlite3到arm平台 <small>07 Feb 2012</small> </a></h3></li><li><h3> <a href="/2011/log4cxx-usage"> log4cxx 使用方法 <small>14 Jul 2011</small> </a></h3></li><li><h3> <a href="/2010/opencv-IPlImage-to-tiff"> OpenCV的IPlImage保存为CCITT4压缩的TIFF格式 <small>16 Sep 2010</small> </a></h3></li></ul></div></div></body></html>
